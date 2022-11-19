@@ -1,8 +1,8 @@
-package slice2
+package slices
 
 import "fmt"
 
-func Slice2Reverse_v1(my_slice []int) []int {
+func SliceSwap2_v1(my_slice []int) []int {
 
 	j := len(my_slice) - 1
 
@@ -18,7 +18,7 @@ func Slice2Reverse_v1(my_slice []int) []int {
 	return my_slice
 }
 
-func Slice2Reverse_v2(my_slice []int) []int {
+func SliceSwap2_v2(my_slice []int) []int {
 
 	for i, j := 0, len(my_slice)-1; i < j; i, j = i+1, j-1 {
 
