@@ -2,7 +2,6 @@ package queues
 
 import (
 	"container/list"
-	"fmt"
 )
 
 type QueueList struct {
@@ -11,17 +10,7 @@ type QueueList struct {
 
 func (ql QueueList) Empty() bool {
 
-	fmt.Println(ql.q)
-
-	is_empty := false
-
-	if ql.q == nil {
-		is_empty = true
-	} else if ql.q.Len() == 0 {
-		is_empty = true
-	}
-
-	return is_empty
+	return ql.q.Len() == 0
 }
 
 func (ql QueueList) Enqueue(v int) {
@@ -29,9 +18,10 @@ func (ql QueueList) Enqueue(v int) {
 	ql.q.PushBack(v)
 }
 
-func (ql QueueList) Dequeue() any {
+func (ql QueueList) ProcessNext() any {
 
-	myvar := ql.q.Remove(ql.q.Front())
+	myvar := ql.q.Front()
+	ql.q.Remove(ql.q.Front())
 
 	return myvar
 }

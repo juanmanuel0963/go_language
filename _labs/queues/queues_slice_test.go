@@ -9,18 +9,22 @@ import (
 
 func TestQueues_v1(t *testing.T) {
 
-	q := Queue{}
-	q.Enqueue(10)
-	q.Enqueue(20)
-	q.Enqueue(30)
-	q.Enqueue(40)
-	q.Enqueue(50)
+	queue := Queue{}
+	queue.Enqueue(10)
+	queue.Enqueue(20)
+	queue.Enqueue(30)
+	queue.Enqueue(40)
+	queue.Enqueue(50)
 
-	assert.Equal(t, 5, len(q))
+	assert.Equal(t, 5, len(queue))
 
-	v := q.Dequeue()
+	v := queue.Dequeue()
 	fmt.Println(v)
-	assert.Equal(t, 4, len(q))
+	assert.Equal(t, 4, len(queue))
 
-	assert.Equal(t, false, q.Empty())
+	assert.Equal(t, false, queue.Empty())
+
+	for _, e := range queue {
+		fmt.Println(e)
+	}
 }

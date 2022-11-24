@@ -8,25 +8,48 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestQueuesList(t *testing.T) {
+func TestQueuesList_v1(t *testing.T) {
 
-	ql := QueueList{}
-	q := list.New()
-	ql.q = q
+	queue := list.New()
 
-	fmt.Println(ql.q)
+	queue.PushBack(100)
+	queue.PushBack(200)
+	queue.PushBack(300)
 
-	assert.Equal(t, true, ql.Empty())
+	assert.Equal(t, 3, queue.Len())
+	fmt.Println(queue.Len())
 
-	ql.Enqueue(10)
+	//Process next element
+	queue.Remove(queue.Front())
+	assert.Equal(t, 2, queue.Len())
 
-	assert.Equal(t, false, ql.Empty())
+	for e := queue.Front(); e != nil; e = e.Next() {
+		// do something with e.Value
+		fmt.Println(e.Value)
+	}
 
-	fmt.Println(ql.q)
-	/*	ql.Enqueue(20)
-		ql.Enqueue(30)
-		ql.Enqueue(40)
-		ql.Enqueue(50)
-	*/
-	//assert.Equal(t, 5, ql.q.Len())
+}
+
+func TestQueuesList_v2(t *testing.T) {
+
+	queue := QueueList{}
+	queue.q = list.New()
+
+	fmt.Println(queue.Empty())
+
+	queue.Enqueue(100)
+	queue.Enqueue(200)
+	queue.Enqueue(300)
+
+	assert.Equal(t, 3, queue.q.Len())
+	fmt.Println(queue.Empty())
+
+	queue.ProcessNext()
+	assert.Equal(t, 2, queue.q.Len())
+	fmt.Println(queue.q.Len())
+
+	for e := queue.q.Front(); e != nil; e = e.Next() {
+		// do something with e.Value
+		fmt.Println(e.Value)
+	}
 }
