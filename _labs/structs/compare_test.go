@@ -8,9 +8,9 @@ import (
 
 func TestStructCompare_v1(t *testing.T) {
 
-	person_a := Person{name: "Juan", age: 20}
-	person_b := Person{name: "Juan", age: 20}
-	person_c := Person{name: "Juan", age: 20}
+	person_a := Person{name: "Juan", age: 20, power: 100}
+	person_b := Person{name: "Juan", age: 20, power: 100}
+	person_c := Person{name: "Juan", age: 20, power: 100}
 
 	assert.Equal(t, StrucsCompare_Persons(person_a, person_b), true)
 	assert.NotEqual(t, StrucsCompare_Persons(person_a, person_c), false)
@@ -28,12 +28,12 @@ func TestStrucsCompare_v2(t *testing.T) {
 	}{
 		{
 			"test1",
-			args{Person{name: "Juan", age: 20}, Person{name: "Juan", age: 20}},
+			args{Person{name: "Juan", age: 20, power: 100}, Person{name: "Juan", age: 20, power: 100}},
 			true,
 		},
 		{
 			"test2",
-			args{Person{name: "Juan", age: 20}, Person{name: "Manuel", age: 20}},
+			args{Person{name: "Juan", age: 20, power: 100}, Person{name: "Manuel", age: 20, power: 100}},
 			false,
 		},
 		// TODO: Add test cases.

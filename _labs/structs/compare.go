@@ -1,11 +1,14 @@
 package structs
 
 type Person struct {
-	name string
-	age  int
+	name  string
+	age   int
+	power interface{}
 }
 
 /*
+//Ensure that they don’t contain slices, maps, or functions. Otherwise, the code won’t comply.
+
 	type Animal struct {
 		name string
 		size int
@@ -20,6 +23,7 @@ func StrucsCompare_Persons(a Person, b Person) bool {
 }
 
 /*
+Ensure that they don’t contain slices, maps, or functions. Otherwise, the code won’t comply.
 func StrucsCompare_Animals(a Animal, b Animal) bool {
 
 	equal, err := (a == b)
