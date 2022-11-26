@@ -11,7 +11,7 @@ import (
 
 func TestExceptionHandling(t *testing.T) {
 
-	f, err := os.Open("file.txt")
+	f, err := os.Open("exception_handling_test.txt")
 
 	if err != nil {
 		log.Fatal(err)
@@ -22,5 +22,5 @@ func TestExceptionHandling(t *testing.T) {
 		fmt.Println(f.Name())
 	}
 
-	assert.Equal(t, "file.txt", f.Name())
+	assert.Equal(t, "exception_handling_test.txt", f.Name())
 }
