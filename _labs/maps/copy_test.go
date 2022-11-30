@@ -19,13 +19,13 @@ func TestMapCopy_v1(t *testing.T) {
 
 	map_to, err := MapCopy(map_from, map_to)
 
-	assert.Equal(t, map_to, map_want)
+	assert.Equal(t, map_want, map_to)
 
 	assert.Nil(t, err)
 
 	assert.True(t, reflect.DeepEqual(map_from, map_to))
 
-	assert.NotEqual(t, map_to, map[string]bool{"A": false, "B": false})
+	assert.NotEqual(t, map[string]bool{"A": false, "B": false}, map_to)
 
 }
 

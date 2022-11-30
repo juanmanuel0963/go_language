@@ -5,6 +5,19 @@ import (
 	"math"
 )
 
+// Go interfaces are those that have a defined set of method signatures
+// It is a custom type who can take values that has these methods implementation.
+// The interfaces are abstract which is why we cannot create its instance.
+// But we can create a variable of type interface and that variable can then be
+// assigned to a concrete value that has methods required by the interface.
+// Due to these reasons, an interface can act as two things:
+//- Collection of method signatures
+//- Custom types
+
+//Interface also promotes abstraction. In Golang, we can use interfaces for creating
+//common abstractions which can be used by multiple types by defining method
+//declarations that are compatible with the interface
+
 type geometry interface {
 	area() float64
 	perim() float64

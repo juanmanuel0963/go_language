@@ -1,8 +1,27 @@
 package miscellaneous
 
-import "testing"
+import (
+	"fmt"
+	"testing"
 
-func Test_swap(t *testing.T) {
+	"github.com/stretchr/testify/assert"
+)
+
+func Test_swap_v1(t *testing.T) {
+
+	x := "juan"
+	y := "manuel"
+	gotx, goty := swap(x, y)
+
+	fmt.Println(gotx)
+	fmt.Println(goty)
+
+	assert.Equal(t, "manuel", gotx)
+	assert.Equal(t, "juan", goty)
+
+}
+
+func Test_swap_v2(t *testing.T) {
 	type args struct {
 		x string
 		y string
