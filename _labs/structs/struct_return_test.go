@@ -26,9 +26,10 @@ func TestStructReturn_v2(t *testing.T) {
 func TestStructReturn_v3(t *testing.T) {
 
 	the_struct := &MyStruct{}
-	the_struct_return := StructReturn_v3(the_struct)
 
-	fmt.Println(the_struct_return.Val)
+	StructReturn_v3(the_struct)
 
-	assert.Equal(t, 3, the_struct_return.Val)
+	fmt.Println(the_struct.Val)
+
+	assert.Equal(t, 3, the_struct.Val)
 }

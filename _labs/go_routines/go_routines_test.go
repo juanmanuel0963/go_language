@@ -6,6 +6,10 @@ import (
 	"time"
 )
 
+//Using global variables in goroutines is not recommended because it can be accessed
+//and modified by multiple goroutines concurrently. This can lead to unexpected and
+//arbitrary results.
+
 func TestGoRoutines(t *testing.T) {
 
 	//We see that the sampleRoutine() function is called by specifying the keyword go before it

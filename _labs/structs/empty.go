@@ -8,13 +8,15 @@ func (l Lamp) On() {
 	println("On")
 
 }
+
 func (l Lamp) Off() {
 	println("Off")
 }
-func worker(ch chan struct{}) {
+
+func WorkerRoutine(ch chan struct{}) {
 	// Receive a message from the main program.
 	<-ch
-	fmt.Println("roger2")
+	fmt.Println("Signal Received")
 
 	// Send a message to the main program.
 	close(ch)

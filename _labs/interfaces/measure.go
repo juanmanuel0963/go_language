@@ -14,9 +14,9 @@ import (
 //- Collection of method signatures
 //- Custom types
 
-//Interface also promotes abstraction. In Golang, we can use interfaces for creating
-//common abstractions which can be used by multiple types by defining method
-//declarations that are compatible with the interface
+// Interface also promotes abstraction. In Golang, we can use interfaces for creating
+// common abstractions which can be used by multiple types by defining method
+// declarations that are compatible with the interface
 
 type geometry interface {
 	area() float64

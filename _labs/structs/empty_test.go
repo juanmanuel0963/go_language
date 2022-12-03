@@ -18,7 +18,7 @@ func TestEmptyStructs_v1(t *testing.T) {
 // When implementing a data set:
 func TestEmptyStructs_v2(t *testing.T) {
 	set := make(map[string]struct{})
-	for _, value := range []string{"apple", "orange", "apple"} {
+	for _, value := range []string{"apple", "orange", "strawberry"} {
 		set[value] = struct{}{}
 	}
 	fmt.Println(set)
@@ -55,15 +55,12 @@ func TestEmptyStructs_v5(t *testing.T) {
 	ch := make(chan struct{})
 
 	// Starting a concurrent goroutine
-	go worker(ch)
+	go WorkerRoutine(ch)
 
-	// Sending values to the channel c
+	// Send signal to worker goroutine
 	ch <- struct{}{}
 
-	// Receive a message from the worker.
+	// Receive a message from the workerRoutine.
 	<-ch
-	fmt.Println("roger1")
-	// Output:
-	// roger
-	// roger
+	fmt.Println("Signal Received")
 }

@@ -1,0 +1,16 @@
+go env
+
+GOROOT=C:\Program Files\Go
+- Where the Go SDK is located.
+- The GoROOT determines the location of Go SDK
+
+GOPATH=C:\Users\Juan Manuel\go
+- The GoPATH determines the root of the workspace
+- The source and the binaries of Go Projects.
+
+
+
+
+
+
+

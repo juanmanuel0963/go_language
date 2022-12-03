@@ -1,6 +1,7 @@
 package maps
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 
@@ -29,7 +30,7 @@ func TestMapCopy_v1(t *testing.T) {
 
 }
 
-func TestMapCopy(t *testing.T) {
+func TestMapCopy_v2(t *testing.T) {
 	type args struct {
 		from_map map[string]bool
 		to_map   map[string]bool
@@ -66,4 +67,17 @@ func TestMapCopy(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestMapCopy_v3(t *testing.T) {
+
+	map1 := map[string]bool{"Interview": true, "Bit": true}
+	map2 := map[string]bool{"Interview": true, "Questions": true}
+	map3 := map1
+	map1 = map2 //copy description
+	fmt.Println(map1, map2, map3)
+
+	assert.Equal(t, map[string]bool{"Interview": true, "Questions": true}, map1)
+	assert.Equal(t, map[string]bool{"Interview": true, "Questions": true}, map2)
+	assert.Equal(t, map[string]bool{"Interview": true, "Bit": true}, map3)
 }

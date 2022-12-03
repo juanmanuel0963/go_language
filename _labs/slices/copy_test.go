@@ -1,6 +1,7 @@
 package slices
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 
@@ -8,10 +9,10 @@ import (
 )
 
 func TestCopy_v1(t *testing.T) {
-	assert.Equal(t, SliceCopy([]int{1, 2, 3, 4, 5}, make([]int, 5)), []int{1, 2, 3, 4, 5})
+	assert.Equal(t, []int{1, 2, 3, 4, 5}, SliceCopy([]int{1, 2, 3, 4, 5}, make([]int, 5)))
 }
 
-func TestSliceCopy(t *testing.T) {
+func TestCopy_v2(t *testing.T) {
 	type args struct {
 		from_slice []int
 		to_slice   []int
@@ -39,4 +40,17 @@ func TestSliceCopy(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestCopy_v3(t *testing.T) {
+
+	slice1 := []int{1, 2}
+	slice2 := []int{3, 4}
+	slice3 := slice1
+	slice1 = slice2
+	fmt.Println(slice1, slice2, slice3)
+
+	assert.Equal(t, []int{3, 4}, slice1)
+	assert.Equal(t, []int{3, 4}, slice2)
+	assert.Equal(t, []int{1, 2}, slice3)
 }
