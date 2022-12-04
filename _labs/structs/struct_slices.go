@@ -1,4 +1,4 @@
-package miscellaneous
+package structs
 
 import "fmt"
 
@@ -10,19 +10,7 @@ type Car struct {
 	color string
 }
 
-func StructSlices() {
-	MyCars := []Car{
-		{
-			name:  "Toyota",
-			model: "Corolla",
-			color: "red",
-		},
-		{
-			name:  "Toyota",
-			model: "Innova",
-			color: "gray",
-		},
-	}
+func StructSlices(MyCars []Car) int {
 
 	for i := 0; i < len(MyCars); i++ {
 		if MyCars[i].color == "red" {
@@ -31,4 +19,6 @@ func StructSlices() {
 			fmt.Println("Number of Red Cars ", numOfRedCars)
 		}
 	}
+
+	return numOfRedCars
 }
