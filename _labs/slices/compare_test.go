@@ -1,6 +1,8 @@
 package slices
 
 import (
+	"bytes"
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -15,6 +17,7 @@ func TestSliceCompare_v1(t *testing.T) {
 }
 
 func TestSliceCompare_v2(t *testing.T) {
+
 	type args struct {
 		A_slice []int
 		B_slice []int
@@ -43,4 +46,19 @@ func TestSliceCompare_v2(t *testing.T) {
 			}
 		})
 	}
+
+}
+
+func TestSliceCompare_v3(t *testing.T) {
+
+	sl1 := []byte{'I', 'N', 'T', 'E', 'R', 'V', 'I', 'E', 'W'}
+	sl2 := []byte{'B', 'I', 'T'}
+	// Use Compare function to compare slices
+	res := bytes.Compare(sl1, sl2)
+	if res == 0 {
+		fmt.Println("Equal Slices")
+	} else {
+		fmt.Println("Unequal Slices")
+	}
+
 }
