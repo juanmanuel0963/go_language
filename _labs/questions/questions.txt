@@ -1,3 +1,6 @@
+How is GoPATH different from GoROOT variables in Go?
+----------------------------------------------------
+
 go env
 
 GOROOT=C:\Program Files\Go
@@ -8,9 +11,276 @@ GOPATH=C:\Users\Juan Manuel\go
 - The GoPATH determines the root of the workspace
 - The source and the binaries of Go Projects.
 
+What are Goroutines?
+--------------------
+- Goroutines are functions or methods that run concurrently with other functions or methods. 
+- Goroutines can be thought of as light weight threads. 
+- The cost of creating a Goroutine is tiny when compared to a thread. 
+- Its common for Go applications to have thousands of Goroutines running concurrently.
+- A goroutine is a function or method that executes concurrently alongside any other goroutines using a special goroutine thread. 
+- Goroutine threads are more lightweight than standard threads, with most Golang programs using thousands of goroutines at once.
+- To create a goroutine, add the go keyword before the function declaration.
+  go f(x, y, z)
+  
+What are some advantages of using Go?
+-------------------------------------
+- Go is an attempt to introduce a new, concurrent, garbage-collected language with fast compilation and the following benefits:
+- It is possible to compile a large Go program in a few seconds on a single computer.
+- Go provides a model for software construction that makes dependency analysis easy and avoids much of the overhead of C-style include files and libraries.
+- Go's type system has no hierarchy, so no time is spent defining the relationships between types. 
+- Also, although Go has static types, the language attempts to make types feel lighter weight than in typical OO languages.
+- Go is fully garbage-collected and provides fundamental support for concurrent execution and communication.
+- By its design, Go proposes an approach for the construction of system software on multicore machines.
 
 
+What are the benefits of using Go programming?
+----------------------------------------------
+Following are the benefits of using Go programming:
+- Support for environment adopting patterns similar to dynamic languages. 
+- For example type inference (x := 0 is valid declaration of a variable x of type int).
+- Compilation time is fast.
+- In built concurrency support: light-weight processes (via goroutines), channels, select statement.
+- Conciseness, Simplicity, and Safety.
+- Support for Interfaces and Type embedding.
+- The go compiler supports static linking. All the go code can be statically linked into one big fat binary and it can be deployed in cloud servers easily without worrying about dependencies.
+
+What is dynamic type declaration of a variable in Go?
+-----------------------------------------------------
+- A dynamic type variable declaration requires compiler to interpret the type of variable based on value passed to it. 
+- Compiler don't need a variable to have type statically as a necessary requirement.
+
+What is static type declaration of a variable in Go?
+----------------------------------------------------
+- Static type variable declaration provides assurance to the compiler that there is one variable existing with the given type and name so that compiler proceed for further compilation without needing complete detail about the variable. 
+- A variable declaration has its meaning at the time of compilation only, compiler needs actual variable declaration at the time of linking of the program.
+
+What is a pointer?
+------------------
+- A pointer variable can hold the address of a variable.
+- &P: pointer to the variable address
+- *P: pointer to the variable value
+
+What kind of type conversion is supported by Go?
+------------------------------------------------
+- Go is very strict about explicit typing. 
+- There is no automatic type promotion or conversion. 
+- Explicit type conversion is required to assign a variable of one type to another.
+
+Why the Go language was created?
+--------------------------------
+- Go was born out of frustration with existing languages and environments for systems programming.
+- Go is an attempt to have:
+- an interpreted, dynamically typed language with
+- the efficiency and safety of a statically typed, compiled language
+- support for networked and multicore computing
+- be fast in compilation
+
+Can Go have optional parameters? Or can I just define two functions with the same name and a different number of arguments?
+---------------------------------------------------------------------------------------------------------------------------
+- Go does not have optional parameters nor does it support method overloading:
+- Method dispatch is simplified if it doesn't need to do type matching as well. 
+- Experience with other languages told us that having a variety of methods with the same name but different signatures was occasionally useful but that it could also be confusing and fragile in practice. 
+- Matching only by name and requiring consistency in the types was a major simplifying decision in Go's type system.
+
+Is Go an object-oriented language?
+----------------------------------
+- Yes and no. 
+- Although Go has types and methods and allows an object-oriented style of programming, there is no type hierarchy. 
+- This is in contrast to most object-oriented languages like C++, Java, C#, Scala, and even dynamic languages like Python and Ruby.
+
+Go Object-Oriented Language Features
+------------------------------------
+
+- Structs - Structs are user-defined types. Struct types (with methods) serve similar purposes to classes in other languages.
+- Methods - Methods are functions that operate on particular types. They have a receiver clause that mandates what type they operate on.
+- Embedding - we can embed anonymous types inside each other. If we embed a nameless struct then the embedded struct provides its state (and methods) to the embedding struct directly.
+- Interfaces - Interfaces are types that declare sets of methods. 
+            Similarly to interfaces in other languages, they have no implementation. 
+            Objects that implement all the interface methods automatically implement the interface. 
+            There is no inheritance or subclassing or "implements" keyword.
+
+The Go way to implement:
+------------------------
+
+- Encapsulation - Go encapsulates things at the package level. 
+            Names that start with a lowercase letter are only visible within that package. 
+            You can hide anything in a private package and just expose specific types, interfaces, and factory functions.
+- Inheritance - composition by embedding an anonymous type is equivalent to implementation inheritance.
+- Polymorphism - A variable of type interface can hold any value which implements the interface.
+
+How do we perform inheritance with Golang?
+------------------------------------------------
+- This is a bit of a trick question: there is no inheritance in Golang because it does not support classes.
+- However, you can mimic inheritance behavior using composition to use an existing struct object to define a starting behavior of a new object. 
+- Once the new object is created, functionality can be extended beyond the original struct.
+
+type Animal struct {
+    // …
+}
+
+func (a *Animal) Eat()   { … }
+func (a *Animal) Sleep() { … }
+func (a *Animal) Run() { … }
+
+type Dog struct {
+    Animal
+    // …
+}
+
+- The Animal struct contains Eat(), Sleep(), and Run() functions. 
+- These functions are embedded into the child struct Dog by simply listing the struct at the top of the implementation of Dog.
+
+Explain Go interfaces. What are they and how do they work?
+----------------------------------------------------------
+- Interfaces are a special type in Go that define a set of method signatures but do not provide implementations. 
+- Values of interface type can hold any value that implements those methods.
+- Interfaces essentially act as placeholders for methods that will have multiple implementations based on what object is using it.
+- For example, you could implement a geometry interface that defines that all shapes that use this interface must have an implementation of area() and perim().
+
+type geometry interface {
+    area() float64
+    perim() float64
+}
+
+Is there a foreach construct in the Go language?
+------------------------------------------------
+
+ - A for statement with a range clause iterates through all entries of an array, slice, string or map, or values received on a channel. 
+ - For each entry it assigns iteration values to corresponding iteration variables and then executes the block.
+
+ What are the differences between unbuffered and buffered channels?
+ ------------------------------------------------------------------
+- For unbuffered channel, the sender will block on the channel until the receiver receives the data from the channel, 
+  whilst the receiver will also block on the channel until sender sends data into the channel.
+- For buffered channel, the sender of buffered channel will block when there is no empty slot of the channel, 
+  while the receiver will block on the channel when it is empty.
+
+What is rune type in Go?
+------------------------
+- There are many other symbols invented by humans other than the 'abcde..' symbols. And there are so many that we need 32 bit to encode them.
+- A rune is a builtin type in Go and it's the alias of int32. Rune represents a Unicode CodePoint in Go. 
+- It does not matter how many bytes the code point occupies, it can be represented by a rune. For example the rule literal a is in reality the number 97.
+- A string is not necessarily a sequence of runes. We can convert between string and []rune, but they are different.
+
+What is so special about constants in Go?
+-----------------------------------------
+Constants in Go are special.
+- Untyped constants. Any constant in golang, named or unnamed, is untyped unless given a type explicitly. 
+    For example an untyped floating-point constant like 4.5 can be used anywhere a floating-point value is allowed. 
+    We can use untyped constants to temporarily escape from Go’s strong type system until their evaluation in a type-demanding expression.
+    // untyped integer constant
+    const a = 1
+    var myFloat32 float32 = 4.5
+    var myComplex64 complex64 = 4.5
+
+- Typed constants. Constants are typed when you explicitly specify the type in the declaration. 
+    With typed constants, you lose all the flexibility that comes with untyped constants like assigning them to any variable of compatible type or mixing them in mathematical operations.
+    const typedInt int = 1  
+
+- Generally we should declare a type for a constant only if it’s absolutely necessary. 
+- Otherwise, just declare constants without a type.
+
+What is the difference between the = and := operator?
+-----------------------------------------------------
+- In Go, := is for declaration + assignment, 
+- whereas = is for assignment only.
+- For example, var foo int = 10 is the same as foo := 10.
+
+Why would you prefer to use an empty struct{}?
+----------------------------------------------
+- You would use an empty struct when you would want to save some memory. 
+- Empty structs do not take any memory for its value.
+
+a := struct{}{}
+println(unsafe.Sizeof(a))
+// Output: 0
+
+- This saving is usually insignificant and is dependent on the size of the slice or a map. 
+- Although, more important use of an empty struct is to show a reader you do not need a value at all. 
+- Its purpose in most cases is mainly informational.
+
+List the functions that can stop or suspend the execution of current goroutine, and explain their differences.
+--------------------------------------------------------------------------------------------------------------
+- runtime.Gosched: give up CPU core and join the queue, thus will be executed automatically.
+- runtime.gopark: blocked until the callback function unlockf in argument list return false.
+- runtime.notesleep: hibernate the thread.
+- runtime.Goexit: stop the execution of goroutine immediately and call defer, but it will not cause panic.
 
 
+What are the use(s) for tags in Go?
+-----------------------------------
+- A tag for a field allows you to attach meta-information to the field which can be acquired using reflection. 
+- Usually it is used to provide transformation info on how a struct field is encoded to or decoded from another format (or stored/retrieved from a database), 
+  but you can use it to store whatever meta-info you want to, either intended for another package or for your own use.
 
+type User struct {
+    Name  string `mytag:"MyName"`
+    Email string `mytag:"MyEmail"`
+}
+
+u := User{"Bob", "bob@mycompany.com"}
+t := reflect.TypeOf(u)
+
+for _, fieldName := range []string{"Name", "Email"} {
+    field, found := t.FieldByName(fieldName)
+    if !found {
+        continue
+    }
+    fmt.Printf("\nField: User.%s\n", fieldName)
+    fmt.Printf("\tWhole tag value : %q\n", field.Tag)
+    fmt.Printf("\tValue of 'mytag': %q\n", field.Tag.Get("mytag"))
+}
+
+When is the init() function run?
+--------------------------------
+- init() is called after all the variable declarations in the package have evaluated their initializers, 
+  and those are evaluated only after all the imported packages have been initialized.
+- If a package has one or more init() functions they are automatically executed before the main package's main() function is called.
+- import --> const --> var --> init()
+- If a package imports other packages, the imported packages are initialized first.
+- Current package's constant initialized then.
+- Current package's variables are initialized then.
+- Finally, init() function of current package is called.
+
+What data types does Golang use?
+--------------------------------
+
+Golang uses the following types:
+
+- Method
+- Boolean
+- Numeric
+- String
+- Array
+- Slice
+- Struct
+- Pointer
+- Function
+- Interface
+- Map
+- Channel
+
+What are packages in a Go program?
+--------------------------------
+- Packages (pkg) are directories within your Go workspace that contain Go source files or other packages. 
+- Every function, variable, and type from your source files are stored in the linked package. 
+- Every Go source file belongs to a package, which is declared at the top of the file using:
+  package <packagename>
+- You can import and export packages to reuse exported functions or types using:
+  import <packagename>
+- Golang’s standard package is fmt, which contains formatting and printing functionalities like Println().
+
+What form of type conversion does Go support?
+---------------------------------------------
+
+- Go supports explicit type conversion to satisfy its strict typing requirements.
+i := 55      //int
+j := 67.8    //float64
+sum := i + int(j) //j is converted to int
+
+What are function closures?
+---------------------------
+- Function closures is a function value that references variables from outside its body. 
+- The function may access and assign values to the referenced variables.
+- For example: adder() returns a closure, which is each bound to its own referenced sum variable.
 

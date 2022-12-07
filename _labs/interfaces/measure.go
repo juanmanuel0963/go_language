@@ -18,6 +18,11 @@ import (
 // common abstractions which can be used by multiple types by defining method
 // declarations that are compatible with the interface
 
+//- Interfaces are a special type in Go that define a set of method signatures but do not provide implementations.
+//- Values of interface type can hold any value that implements those methods.
+//- Interfaces essentially act as placeholders for methods that will have multiple implementations based on what object is using it.
+//- For example, you could implement a geometry interface that defines that all shapes that use this interface must have an implementation of area() and perim().
+
 type geometry interface {
 	area() float64
 	perim() float64

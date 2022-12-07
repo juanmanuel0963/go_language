@@ -18,7 +18,7 @@ func TestStructSlices_v1(t *testing.T) {
 
 }
 
-func TestStructSlices(t *testing.T) {
+func TestStructSlices_v2(t *testing.T) {
 	type args struct {
 		MyCars []Car
 	}
