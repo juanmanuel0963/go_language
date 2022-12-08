@@ -2,9 +2,15 @@ package queues
 
 type Queue []int
 
-func (q Queue) Empty() bool { return len(q) == 0 }
+func (q Queue) Empty() bool {
 
-func (q *Queue) Enqueue(v int) { (*q) = append((*q), v) }
+	return len(q) == 0
+}
+
+func (q *Queue) Enqueue(v int) {
+
+	(*q) = append((*q), v)
+}
 
 func (q *Queue) Dequeue() int {
 
@@ -16,5 +22,6 @@ func (q *Queue) Dequeue() int {
 }
 
 func (q Queue) GetValues() []int {
+
 	return q
 }

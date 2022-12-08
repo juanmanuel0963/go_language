@@ -11,16 +11,6 @@ GOPATH=C:\Users\Juan Manuel\go
 - The GoPATH determines the root of the workspace
 - The source and the binaries of Go Projects.
 
-What are Goroutines?
---------------------
-- Goroutines are functions or methods that run concurrently with other functions or methods. 
-- Goroutines can be thought of as light weight threads. 
-- The cost of creating a Goroutine is tiny when compared to a thread. 
-- Its common for Go applications to have thousands of Goroutines running concurrently.
-- A goroutine is a function or method that executes concurrently alongside any other goroutines using a special goroutine thread. 
-- Goroutine threads are more lightweight than standard threads, with most Golang programs using thousands of goroutines at once.
-- To create a goroutine, add the go keyword before the function declaration.
-  go f(x, y, z)
   
 What are some advantages of using Go?
 -------------------------------------
@@ -284,3 +274,70 @@ What are function closures?
 - The function may access and assign values to the referenced variables.
 - For example: adder() returns a closure, which is each bound to its own referenced sum variable.
 
+What are Goroutines?
+--------------------
+- Goroutines are functions or methods that run concurrently with other functions or methods. 
+- Goroutines can be thought of as light weight threads. 
+- The cost of creating a Goroutine is tiny when compared to a thread. 
+- Its common for Go applications to have thousands of Goroutines running concurrently.
+- A goroutine is a function or method that executes concurrently alongside any other goroutines using a special goroutine thread. 
+- Goroutine threads are more lightweight than standard threads, with most Golang programs using thousands of goroutines at once.
+- To create a goroutine, add the go keyword before the function declaration.
+  go f(x, y, z)
+
+  What are Lvalue and Rvalue in Golang?
+  -------------------------------------
+
+  Lvalue:
+- Refers to a memory location
+- Represents a variable identifier
+- Mutable
+- May appear on the left or right side of the = operator
+- For example: In the statement x = 20, x is an lvalue and 20 is an rvalue.
+
+Rvalue:
+- Represents a data value stored in memory
+- Represents a constant value
+- Always appears on the = operator’s right side.
+
+For example, The statement 10 = 20 is invalid because there is an rvalue (10) left of the = operator.
+
+What are the looping constructs in Go?
+-------------------------------------
+
+Go has only one looping construct: the for loop.
+The for loop has 3 components separated by semicolons:
+
+- The Init statement, which is executed before the loop begins. 
+  It’s often a variable declaration only visible within the scope of the for loop.
+  i := 0
+- The condition expression, which is evaluated as a Boolean before each iteration to determine if the loop should continue.
+  i < 10
+- The post statement, which is executed at the end of each iteration.
+  i++
+
+package main
+import "fmt"
+func main() {
+    sum := 0
+    for i := 0; i < 10; i++ {
+        sum += i
+    } 
+    fmt.Println(sum)
+}
+
+Explain the difference between concurrency and parallelism in Golang
+--------------------------------------------------------------------
+
+- Concurrency is when your program can handle multiple tasks at once 
+- while parallelism is when your program can execute multiple tasks at once using multiple processors. 
+
+- In other words, concurrency is a property of a program that allows you to have multiple tasks in progress at the same time, 
+  but not necessarily executing at the same time. 
+- Parallelism is a runtime property where two or more tasks are executed at the same time.
+- Parallelism can therefore be a means to achieve the property of concurrency, but it is just one of many means available to you.
+
+- The key tools for concurrency in Golang are goroutines and channels. 
+
+- Goroutines are concurrent lightweight threads 
+- while Channels allow goroutines to communicate with each other during execution.

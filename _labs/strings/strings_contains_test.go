@@ -1,4 +1,4 @@
-package programs
+package strings
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestContainsString(t *testing.T) {
+func TestStringContains(t *testing.T) {
 
 	contains := StringContains("Welcome to New York City", "City")
 	fmt.Println(contains)

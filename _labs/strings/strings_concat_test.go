@@ -35,11 +35,9 @@ func TestStringsConcat_v2(t *testing.T) {
 
 	// Creating and initializing strings
 	// using var keyword
-	var str1 string
-	str1 = "Hello "
+	var str1 = "Hello "
 
-	var str2 string
-	str2 = "Reader!"
+	var str2 = "Reader!"
 
 	// Concatenating strings
 	// Using + operator
