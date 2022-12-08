@@ -49,6 +49,8 @@ What is a pointer?
 - A pointer variable can hold the address of a variable.
 - &P: pointer to the variable address
 - *P: pointer to the variable value
+- In GO a pointer is represented by using the * (asterisk) character followed by the type of the stored value.
+- *testing.T
 
 What kind of type conversion is supported by Go?
 ------------------------------------------------
@@ -131,6 +133,9 @@ type geometry interface {
     area() float64
     perim() float64
 }
+- An interface is specified as two things.
+  A set of methods
+  Also it is referred as type
 
 Is there a foreach construct in the Go language?
 ------------------------------------------------
@@ -285,6 +290,13 @@ What are Goroutines?
 - To create a goroutine, add the go keyword before the function declaration.
   go f(x, y, z)
 
+Explain what is go routine in GO? How you can stop go routine?
+--------------------------------------------------------------
+
+- A goroutine is a function which is capable of running concurrently with other functions.
+- To stop goroutine, you pass the goroutine  a signal channel, that signal channel is used to push a value into when you want the goroutine to stop.
+- The goroutine polls that channel regularly as soon as it detects a signal, it quits.
+
   What are Lvalue and Rvalue in Golang?
   -------------------------------------
 
@@ -341,3 +353,21 @@ Explain the difference between concurrency and parallelism in Golang
 
 - Goroutines are concurrent lightweight threads 
 - while Channels allow goroutines to communicate with each other during execution.
+
+Explain how you can do testing in GO?
+-------------------------------------
+- It has a lightweight testing framework consists of the go test command and the testing package. 
+- To write a test you have to create a file with a name ending in _testing. 
+- Go which contains functions named TestXXX with signature func (t *testing.T). 
+- The test framework runs each such function.
+
+List out the built in support in GO?
+-------------------------------------
+
+The available built-in-support in GO includes
+
+- Container: container/list , container/heap
+- Web Server: net/http
+- Cryptography: Crypto/md5 , crypto/sha1
+- Compression: compress/ gzip
+- Database: database/sql

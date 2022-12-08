@@ -2,7 +2,7 @@ package miscellaneous
 
 import "fmt"
 
-func VariableTypeAssertion(i interface{}) {
+func VariableTypeAssertionRuntime(i interface{}) {
 
 	switch v := i.(type) {
 	case int:

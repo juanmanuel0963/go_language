@@ -7,15 +7,6 @@ import (
 	"testing"
 )
 
-func TestStrings(t *testing.T) {
-
-	var Raw_String_Literals = `uninterrupted string`
-	fmt.Println(Raw_String_Literals)
-
-	var Interpreted_String_Literals = "interrupted\nstring"
-	fmt.Println(Interpreted_String_Literals)
-}
-
 func TestStringsConcat_v1(t *testing.T) {
 	// ZERO-VALUE:
 	//
