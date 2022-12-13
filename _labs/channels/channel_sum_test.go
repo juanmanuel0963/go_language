@@ -2,7 +2,6 @@ package channels
 
 import (
 	"fmt"
-	"math/rand"
 	"testing"
 )
 
@@ -96,21 +95,24 @@ func TestIsPrime_v4(t *testing.T) {
 	cIn := make(chan PrimeMsg, TEST_LEN)
 	cOut := make(chan PrimeMsg, TEST_LEN)
 
-	//Create workers
+	//Create workers (threads/Go Routines for concurrency)
 	for i := 0; i < NUM_WORKERS; i++ {
+		fmt.Println("Create workers: ", i)
 		go IsPrime(cIn, cOut)
 	}
 
 	//Fill the input queue
 	for i := 0; i < TEST_LEN; i++ {
-		msg.num = rand.Intn(100) + 100
+		fmt.Println("Fill the input queue: ", i)
+		//msg.num = rand.Intn(100) + 100
+		msg.num = i
 		cIn <- msg
 	}
 
 	//Read the answers
 	for i := 0; i < TEST_LEN; i++ {
+		//fmt.Println("Read the answers: ", i)
 		msg = <-cOut
-		fmt.Println(msg.num, "is prime", msg.isPrime)
+		fmt.Println(msg.num, "Is prime: ", msg.isPrime)
 	}
-
 }

@@ -3,7 +3,6 @@ package channels
 import (
 	"fmt"
 	"math"
-	"math/rand"
 )
 
 // Channel in both directions
@@ -39,16 +38,16 @@ type PrimeMsg struct {
 }
 
 const TEST_LEN = 100
-const NUM_WORKERS = 3
+const NUM_WORKERS = 5
 
 func IsPrime(cIn chan PrimeMsg, cOut chan PrimeMsg) {
 
-	id := rand.Intn(100)
+	//id := rand.Intn(100)
 	i := 0
 	for {
 		msg := <-cIn
 		num := msg.num
-		fmt.Println(id, "is testing", num)
+		//fmt.Println(id, "is testing", num)
 		sq_root := int(math.Sqrt(float64(num)))
 		for i = 2; i <= sq_root; i++ {
 			if num%i == 0 {
