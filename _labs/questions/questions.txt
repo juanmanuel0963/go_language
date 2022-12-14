@@ -371,3 +371,56 @@ The available built-in-support in GO includes
 - Cryptography: Crypto/md5 , crypto/sha1
 - Compression: compress/ gzip
 - Database: database/sql
+
+How can you format the Go source code in an idiomatic way?
+----------------------------------------------------------
+gofmt -w main.go
+gofmt -w -l directory_name/
+
+You have developed a Go program on Linux and want to compile it for both Windows and Mac. Is it possible?
+---------------------------------------------------------------------------------------------------------
+Yes, it’s possible to compile a Go application for different operating systems.
+
+How can you compile a Go program for Windows and Mac?
+----------------------------------------------------------
+- Compile the application for Linux
+  $Env:GOOS = "linux" 
+  go build main.go
+
+- Compile the application for Windows and 64bit CPUs:
+  $Env:GOOS = "windows" 
+  $Env:GOARCH = "amd64" 
+  go build main.go
+
+- Compile the application for Mac and 64bit CPUs:
+  $Env:GOOS = "darwin" 
+  $Env:GOARCH = "amd64" 
+  go build main.go
+
+Starting from an empty file, how would you create a Go program’s basic structure? 
+Annotate the most important parts of the source code using comments.
+----------------------------------------------------------------------------------
+
+// package clause 
+// It starts every Go source file. 
+// main is a special name declaring an executable rather than a library (package)
+package main
+
+// import declaration.
+// It declares packages used in this file.
+// fmt is a standard library package uses to print to standard output (console)
+import "fmt"
+
+// function declaration. 
+// main is a special function name. it’s the entry point for the executable program
+
+func main() {
+	// local scoped variables and constants declarations, calling functions etc
+	var age int = 20
+	var today string = "Monday"
+
+	// Println() function from fmt package prints out a line to stdout
+	fmt.Println("Today is", today) // => Today is Monday
+	fmt.Println("You age is", age) // => You age is 17
+
+}
