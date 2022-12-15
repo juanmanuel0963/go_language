@@ -1,0 +1,20 @@
+How is GoPATH different from GoROOT variables in Go?
+----------------------------------------------------
+
+c:\go env
+
+GOROOT=C:\Program Files\Go
+- Where the Go SDK is located.
+- The GoROOT determines the location of Go SDK
+
+GOPATH=C:\Users\Juan Manuel\go
+- The GoPATH determines the root of the workspace
+- The source and the binaries of Go Projects.
+
+How can you configure working environments and parameters? 
+----------------------------------------------------------
+- You can configure working environments and parameters using JSON, commonly used these days.
+- The major advantage of using JSON is that it is available in the standard library. 
+- The standard library offers methods to write the data structure intended, which makes it quite readable.
+- Another alternative is to use the YAML package for Go. 
+  

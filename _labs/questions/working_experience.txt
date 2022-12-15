@@ -1,0 +1,12 @@
+How many years of experience do you have with Golang? What other technologies have you used other than Golang?
+--------------------------------------------------------------------------------------------------------------
+- You can add the number of years you’ve been practicing the Golang language before using it.
+- For example, if you’ve practiced Golang for three years and then started using it in your career for four years, you can say that you have seven years of experience with Golang. 
+- As for the other technologies, make sure you list down all the programming languages you’re familiar with and let the hiring manager know about your expertise in those languages. 
+
+Can you tell us more about Golang and your experience working with this programming language?
+---------------------------------------------------------------------------------------------
+- Using this question, the hiring manager will try to learn about your understanding of the programming language. 
+- You should start with your number of years of experience with Golang. 
+- Then, explain the projects you’ve worked on using this programming language.
+- Ensure that you describe in detail your role in those projects.
