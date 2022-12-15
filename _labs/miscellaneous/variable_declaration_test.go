@@ -39,12 +39,14 @@ func TestVariableDeclaration(t *testing.T) {
 
 	// 5 - declare variables belonging to different types in a single statement
 	var (
-		name1 = "initialvalue1"
-		name2 = "initialvalue2"
+		name1   = "initialvalue1"
+		name2   = "initialvalue2"
+		height1 = 1.80
 	)
 
 	fmt.Println(name1)
 	fmt.Println(name2)
+	fmt.Println(height1)
 
 	// 6 - short hand declaration
 

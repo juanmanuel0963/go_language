@@ -1,4 +1,4 @@
-package interfaces
+package slices
 
 import (
 	"fmt"
@@ -12,7 +12,7 @@ import (
 // These methods sort any collection that implements sort.Interface interface that has
 // Len(), Less() and Swap() methods as shown in the code below:
 
-func TestSort(t *testing.T) {
+func TestSortSliceStructs(t *testing.T) {
 
 	audience := []Human{
 		{"Alice", 35},

@@ -6,7 +6,8 @@ import (
 )
 
 // go run command_with_args.go twitter facebook whatsapp
-
+// go run -race command_with_args.go twitter facebook whatsapp
+// go test -race
 func main() {
 
 	fmt.Println("Init")

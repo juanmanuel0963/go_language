@@ -1,4 +1,4 @@
-package interfaces
+package slices
 
 type MyInterface interface {
 	// Find number of elements in collection

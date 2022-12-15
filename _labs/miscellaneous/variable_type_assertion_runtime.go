@@ -4,6 +4,10 @@ import "fmt"
 
 func VariableTypeAssertionRuntime(i interface{}) {
 
+	t, isSuccess := i.(T)
+	fmt.Println()
+	fmt.Println(isSuccess)
+
 	switch v := i.(type) {
 	case int:
 		fmt.Printf("Double %v is %v\n", v, v*2)

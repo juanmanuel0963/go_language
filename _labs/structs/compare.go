@@ -6,28 +6,17 @@ type Person struct {
 	power interface{}
 }
 
-/*
 //Ensure that they don’t contain slices, maps, or functions. Otherwise, the code won’t comply.
 
-	type Animal struct {
-		name string
-		size int
-		sons []string
-	}
-*/
+type Animal struct {
+	name string
+	size int
+	sons []string
+}
+
 func StrucsCompare_Persons(a Person, b Person) bool {
 
 	equal := (a == b)
 
 	return equal
 }
-
-/*
-Ensure that they don’t contain slices, maps, or functions. Otherwise, the code won’t comply.
-func StrucsCompare_Animals(a Animal, b Animal) bool {
-
-	equal, err := (a == b)
-
-	return equal
-}
-*/

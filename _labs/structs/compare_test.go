@@ -1,6 +1,7 @@
 package structs
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -10,10 +11,10 @@ func TestStructCompare_v1(t *testing.T) {
 
 	person_a := Person{name: "Juan", age: 20, power: 100}
 	person_b := Person{name: "Juan", age: 20, power: 100}
-	person_c := Person{name: "Juan", age: 20, power: 100}
+	person_c := Person{name: "Manuel", age: 20, power: 100}
 
-	assert.Equal(t, StrucsCompare_Persons(person_a, person_b), true)
-	assert.NotEqual(t, StrucsCompare_Persons(person_a, person_c), false)
+	assert.Equal(t, true, person_a == person_b)
+	assert.NotEqual(t, true, person_a == person_c)
 }
 
 func TestStrucsCompare_v2(t *testing.T) {
@@ -45,4 +46,23 @@ func TestStrucsCompare_v2(t *testing.T) {
 			}
 		})
 	}
+}
+
+// Ensure that they don’t contain slices, maps, or functions. Otherwise, the code won’t comply.
+func TestStructCompare_v3(t *testing.T) {
+	type Bar struct{ A []int }
+
+	a := Bar{A: []int{1}}
+	b := Bar{A: []int{1}}
+
+	fmt.Println(a == b)
+}
+
+// Ensure that they don’t contain slices, maps, or functions. Otherwise, the code won’t comply.
+func TestStructCompare_v4(t *testing.T) {
+
+	animal_a := Animal{name: "Perro", size: 80, sons: []string{"Jacob"}}
+	animal_b := Animal{name: "Gato", size: 50, sons: []string{"Gora"}}
+
+	equal, err := (animal_a == animal_b)
 }

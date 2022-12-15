@@ -12,6 +12,7 @@ func TestStringsConcat_v1(t *testing.T) {
 	//
 	// It's ready to use from the get-go.
 	// You don't need to initialize it.
+	// There is an efficient and recommended way to concatenate string values and that is to use the strings.Builder type, which was introduced in Go 1.10.
 	var sb strings.Builder
 
 	for i := 0; i < 100; i++ {

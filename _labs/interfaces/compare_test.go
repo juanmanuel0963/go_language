@@ -6,6 +6,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// You can compare two interfaces using the == operator if the underlying types are “simple” and identical.
+// Otherwise, the code will panic at runtime:
 func TestCompare(t *testing.T) {
 
 	var a interface{}
