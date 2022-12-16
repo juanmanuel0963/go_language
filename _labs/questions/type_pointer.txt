@@ -1,0 +1,37 @@
+Explain the pointer type.
+-------------------------
+- A variable is a convenient, alphanumeric nickname or label for a memory location.
+- A pointer is a variable type that stores the memory address of another variable. 
+- A pointer value is the address of a variable, or nil if it hasn’t been initialized yet.
+- The pointer points to the memory address of a variable, just as a variable represents the memory address of a value.
+
+- For example, if variable bb has value 156 and is stored at memory address 0x1040a124 then the variable aa (pointer) holds the address of bb (0x1040a124).
+- Now aa is set to point to bb or aa is a pointer to bb. 
+
+Write a Golang program that declares a string variable, prints the address of the variable, declares another int variable, and a pointer to it.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+package main
+
+import "fmt"
+
+func main() {
+
+	//Go provides the & (ampersand) operator also known as the address of operator.
+	lang := "Golang"
+	fmt.Println(&lang) // -> 0xc00010a040
+
+	var x int = 2                                                                  // -> int value
+	ptr := &x                                                                      // -> pointer to int
+	fmt.Printf("ptr is of type %T with value %v and address %p\n", ptr, ptr, &ptr) // -> the pointer is saved at an address as well
+}
+
+What are the advantages of passing pointers to functions?
+---------------------------------------------------------
+- Golang is a pass by value language. 
+- If we pass a non-pointer variable type to a function, the function will create a copy of the variable.
+- Any change to the variable, so to the function’s argument, will not be seen to the outside world.
+- Pointers have the power to mutate or change the data they are pointing to.
+- So if we pass a pointer to a function, and inside the function we change the value the pointer is pointing to, 
+  then the change will be seen outside the function. 
+- In a nutshell, we pass pointers to functions when we want to change the values of the variables inside the function’s body.

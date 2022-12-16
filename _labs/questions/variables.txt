@@ -1,0 +1,98 @@
+Can you declare different variable types within a single line of code?
+----------------------------------------------------------------------
+- Yes, it is possible to declare different variable types within a single line of code.
+- Computer programmers and other information technology professionals often do this to create their inputs more efficiently.
+- For example, you can declare variables like a string, a floating-point integer and an integer number on a single line and return concise outputs with ease.
+  var a, b, c =  3,  4,  "foo" 
+
+What is dynamic type declaration of a variable in Go?
+-----------------------------------------------------
+- A dynamic type variable declaration requires compiler to interpret the type of variable based on value passed to it. 
+- Compiler don't need a variable to have type statically as a necessary requirement.
+
+What is static type declaration of a variable in Go?
+----------------------------------------------------
+- Static type variable declaration provides assurance to the compiler that there is one variable existing with the given type and name so that compiler proceed for further compilation without needing complete detail about the variable. 
+- A variable declaration has its meaning at the time of compilation only, compiler needs actual variable declaration at the time of linking of the program.
+
+Let's talk variable declaration in Go. Could you explain what is a variable "zero value"?
+-----------------------------------------------------------------------------------------
+- Variable is the name given to a memory location to store a value of a specific type. There are various syntaxes to declare variables in go.
+- If a variable is not assigned any value, go automatically initialises it with the zero value of the variable's type. 
+- Go is strongly typed, so variables declared as belonging to one type cannot be assigned a value of another type.
+
+// 1 - variable declaration, then assignment
+var age int
+age = 29
+
+// 2 - variable declaration with initial value
+var age2 int = 29
+
+// 3 - Type inference
+var age3 = 29
+
+// 4 - declaring multiple variables
+var width, height int = 100, 50
+
+// 5 - declare variables belonging to different types in a single statement
+var (
+name1 = initialvalue1,
+name2 = initialvalue2
+)
+
+// 6 - short hand declaration
+name, age4 := "naveen", 29 //short hand declaration
+
+What do you understand by the scope of variables in Go?
+-------------------------------------------------------
+- The variable scope is defined as the part of the program where the variable can be accessed.
+- Every variable is statically scoped (meaning a variable scope can be identified at compile time) in Go which means that the scope is declared at the time of compilation itself.
+- There are two scopes in Go, they are:
+  - Local variables:
+    - These are declared inside a function or a block and is accessible only within these entities.
+  - Global variables:
+    - These are declared outside function or block and is accessible by the whole source file.
+
+Is the usage of Global Variables in programs implementing Goroutines recommended?
+---------------------------------------------------------------------------------
+- Using global variables in Goroutines is not recommended because it can be accessed and modified by multiple goroutines concurrently. 
+- This can lead to unexpected and arbitrary results.
+
+What do you understand by Shadowing in Go?
+------------------------------------------
+- Shadowing is a principle when a variable overrides a variable in a more specific scope.
+- This means that when a variable is declared in an inner scope having the same data type and name in the outer scope, the variable is said to be shadowed.
+- The outer variable is declared before the shadowed variable.
+
+- Consider a code snippet as shown below:
+
+var numOfCars = 2    // Line 1
+type Car struct{
+	name string
+	model string
+	color string
+}
+cars:= [{
+            name:"Toyota",
+            model:"Corolla",
+            color:"red"
+        },
+        {
+	    name:"Toyota",
+            model:"Innova",
+            color:"gray"
+	}]
+
+func countRedCars(){
+    for i:=0; i<numOfCars; i++{
+	if cars[i].color == "red" {
+		numOfCars +=1    // Line 2
+		fmt.Println("Inside countRedCars method ", numOfCars)    //Line 3
+	}
+    }	    
+}
+
+- Here, we have a function called countRedCars where we will be counting the red cars. 
+- We have the numOfCars variable defined at the beginning indicated by the Line 1 comment.
+- Inside the countRedCars method, we have an if statement that checks whether the colour is red and if red then increments the numOfCars by 1.
+- The interesting point here is that the value of the numCars variable after the end of the if statement will not be affecting the value of the numOfCars variable in the outer scope.

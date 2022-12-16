@@ -1,0 +1,15 @@
+What data types does Golang use?
+--------------------------------
+- Golang uses the following types:
+  - Method
+  - Boolean
+  - Numeric
+  - String
+  - Array
+  - Slice
+  - Struct
+  - Pointer
+  - Function
+  - Interface
+  - Map
+  - Channel

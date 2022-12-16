@@ -1,0 +1,20 @@
+What is the difference between the = and := operator?
+-----------------------------------------------------
+- In Go, := is for declaration + assignment, 
+- whereas = is for assignment only.
+- For example, var foo int = 10 is the same as foo := 10.
+
+What are Lvalue and Rvalue in Golang?
+-------------------------------------
+- Lvalue:
+  - Refers to a memory location
+  - Represents a variable identifier
+  - Mutable
+  - May appear on the left or right side of the = operator
+  - For example: In the statement x = 20, x is an lvalue and 20 is an rvalue.
+- Rvalue:
+  - Represents a data value stored in memory
+  - Represents a constant value
+  - Always appears on the = operator’s right side.
+
+- For example, The statement 10 = 20 is invalid because there is an rvalue (10) left of the = operator.

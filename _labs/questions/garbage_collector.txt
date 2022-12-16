@@ -1,0 +1,9 @@
+How GC works in Go programming language?
+----------------------------------------
+- There are many garbage collection methods. 
+- Go has a Mark-and-Sweep garbage collector. It works in two phases:
+- Mark: 
+  Start with Stop-the-world and set a write barrier to know how much was allocated during the mark phase.
+  Mark all the memory that is still being used by the app. After that, remove the write barrier. 
+- Sweep:
+  The second phase is Sweep which happens after new allocations.

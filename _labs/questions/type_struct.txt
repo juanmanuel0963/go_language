@@ -1,0 +1,129 @@
+
+What is a struct type? Can you change the struct definition at runtime?
+-----------------------------------------------------------------------
+- A struct is a sequence of named elements called fields. 
+- Each field has a name and a type.
+- We can also think of a struct as a collection of properties that are related together. 
+- They are useful for grouping data together to form records.
+- This blueprint is fixed at compile time.
+- It’s not allowed to change the name or the type of the fields at runtime.
+- We can’t add or remove fields from a struct at runtime.
+
+What do you understand by each of the functions demo_func() as shown in the below code?
+---------------------------------------------------------------------------------------
+
+//DemoStruct definition
+type DemoStruct struct {
+    Val int
+}
+//A.
+func demo_func() DemoStruct {
+    return DemoStruct{Val: 1}
+}
+//B.
+func demo_func() *DemoStruct {
+    return &DemoStruct{}
+}
+//C.
+func demo_func(s *DemoStruct) {
+    s.Val = 1
+}
+
+- A. Since the function has a return type of the struct, the function returns a copy of the struct by setting the value as 1.
+- B. Since the function returns *DemoStruct, which is a pointer to the struct, it returns a pointer to the struct value created within the function.
+- C. Since the function expects the existing struct object as a parameter and in the function, we are setting the value of its attribute, at the end of execution the value of Val variable of the struct object is set to 1.
+
+
+Why would you prefer to use an empty struct{}?
+----------------------------------------------
+- You would use an empty struct when you would want to save some memory. 
+- Empty structs do not take any memory for its value.
+
+a := struct{}{}
+println(unsafe.Sizeof(a))
+// Output: 0
+
+- This saving is usually insignificant and is dependent on the size of the slice or a map. 
+- Although, more important use of an empty struct is to show a reader you do not need a value at all. 
+- Its purpose in most cases is mainly informational.
+- The important use of empty struct is to show the developer that we do not have any value. 
+- The purpose is purely informational. Some of the examples where the empty struct is useful are as follows:
+---------------------
+- Case 1: 
+- While implementing a data set: We can use the empty struct to implement a dataset. Consider an example as shown below.
+
+    map_obj := make(map[string]struct{})
+    for _, value := range []string{"interviewbit", "golang", "questions"} {
+    map_obj[value] = struct{}{}
+    }
+    fmt.Println(map_obj)
+
+- The output of this code would be:
+
+map[interviewbit:{} golang:{} questions:{}]
+
+- Here, we are initializing the value of a key to an empty struct and initializing the map_obj to an empty struct.
+
+---------------------
+- Case 2: 
+- In graph traversals in the map of tracking visited vertices. 
+- For example, consider the below piece of code where we are initializing the value of vertex visited empty struct.
+
+    visited := make(map[string]struct{})
+    for _, isExists := visited[v]; !isExists {
+        // First time visiting a vertex.
+        visited[v] = struct{}{}
+    }
+
+---------------------
+- Case 3: 
+- When a channel needs to send a signal of an event without the need for sending any data. 
+- From the below piece of code, we can see that we are sending a signal using sending empty struct to the channel which is sent to the workerRoutine.
+
+func workerRoutine(ch chan struct{}) {
+    // Receive message from main program.
+    <-ch
+    println("Signal Received")
+
+    // Send a message to the main program.
+    close(ch)
+}
+
+func main() {
+    //Create channel
+    ch := make(chan struct{})
+    
+    //define workerRoutine
+    go workerRoutine(ch)
+
+    // Send signal to worker goroutine
+    ch <- struct{}{}
+
+    // Receive a message from the workerRoutine.
+    <-ch
+    println(“Signal Received")
+    
+}
+
+- The output of the code would be:
+
+Signal Received
+Signal Received
+
+How can you compare two structures? Give an example.
+-----------------------------------------------------
+- You can use the == operator to compare two structures. 
+- Ensure that they don’t contain slices, maps, or functions. Otherwise, the code won’t comply.
+
+
+What are anonymous structs and anonymous struct fields? Give an example of such a struct declaration.
+-----------------------------------------------------------------------------------------------------
+- An anonymous struct is a struct with no explicitly defined struct type alias.
+- Example of a struct with anonymous fields:
+
+type Book struct {
+       string
+       float64
+       bool
+}
+bestBook := Book{"1984 by George Orwell", 10.2, false}

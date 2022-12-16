@@ -1,0 +1,19 @@
+Char data type
+--------------
+- Golang doesn’t have a char data type. 
+- It uses bytes and runes to represent character values.
+
+Explain BYTE and RUNE types and how they are represented.
+------------------------------------------------------------------
+- Golang has two integer types called BYTE and RUNE that are aliases for uint8 and int32 data types. 
+- The BYTE data type represents ASCII characters, 
+- The RUNE data type represents Unicode characters that are encoded in the UTF-8 format by default.
+- A RUNE represents a single Unicode character.  For example, RUNE 0x61 in hexadecimal represents the rune literal ‘a.’
+- In Golang, we express characters or RUNE literals by enclosing them in single quotes such as ‘a’, ‘b,’, ‘m’, ‘x’ or ‘\n.’
+
+What is RUNE type in Go?
+------------------------
+- There are many other symbols invented by humans other than the 'abcde..' symbols. And there are so many that we need 32 bit to encode them.
+- A rune is a builtin type in Go and it's the alias of int32. Rune represents a Unicode CodePoint in Go. 
+- It does not matter how many bytes the code point occupies, it can be represented by a rune. For example the rule literal a is in reality the number 97.
+- A string is not necessarily a sequence of runes. We can convert between string and []rune, but they are different.

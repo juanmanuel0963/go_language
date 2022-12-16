@@ -1,0 +1,46 @@
+How do you find the type of an object in Go?
+--------------------------------------------
+- Golang programming language does not have the concept of a class type;
+- thus you don’t have objects in Go.
+- Go provides several data types such as int16, int16, int32, int64, float64, string, bool, etc. 
+- You can find the type of a variable in Go at runtime using these three different methods:
+  - Using fmt for a string type description
+  - Using reflect Package
+  - Using type assertions
+
+How will you check the type of a variable at runtime in Go?
+-----------------------------------------------------------
+- In Go, we can use a special type of switch for checking the variable type at runtime.
+- This switch statement is called a “type switch”.
+- Consider the following piece of code where we are checking for the type of variable v and performing some set of operations.
+
+switch v := param.(type) { 
+default:
+    fmt.Printf("Unexpected type %T", v)
+case uint64:
+    fmt.Println("Integer type")
+case string:
+    fmt.Println("String type")
+}
+
+- In the above code, we are checking for the type of variable v, if the type of variable is uint64, then the code prints “Integer type”.
+- If the type of variable is a string, the code prints “String type”.
+- If the type doesn't match, the default block is executed and it runs the statements in the default block.
+
+What do you understand by Type Assertion in Go?
+-----------------------------------------------
+- The type assertion takes the interface value and retrieves the value of the specified explicit data type. The syntax of Type Assertion is:
+
+  t := i.(type)
+
+- Here, the statement asserts that the interface value i has the concrete type T and assigns the value of type T to the variable t. 
+- In case i does not have concrete type T, then the statement will result in panic.
+
+- For testing, if an interface has the concrete type, we can do it by making use of two values returned by type assertion.
+- One value is the underlying value and the other is a bool value that tells if the assertion is completed or not. The syntax would be:
+
+  t, isSuccess := i.(type)
+
+- Here, if the interface value i have T¿type, then the underlying value will be assigned to t and the value of isSuccess becomes true.
+- Else, the isSuccess statement would be false and the value of t would have the zero value corresponding to type type.
+- This ensures there is no panic if the assertion fails.

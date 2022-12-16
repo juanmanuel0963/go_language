@@ -1,0 +1,35 @@
+How can you format the Go source code in an idiomatic way?
+----------------------------------------------------------
+gofmt -w main.go
+gofmt -w -l directory_name/
+
+You have developed a Go program on Linux and want to compile it for both Windows and Mac. Is it possible?
+---------------------------------------------------------------------------------------------------------
+- Yes, it’s possible to compile a Go application for different operating systems.
+
+How can you compile a Go program for Linux, Windows and Mac?
+----------------------------------------------------------
+- Compile the application for Linux
+  $Env:GOOS = "linux" 
+  go build main.go
+
+- Compile the application for Windows and 64bit CPUs:
+  $Env:GOOS = "windows" 
+  $Env:GOARCH = "amd64" 
+  go build main.go
+
+- Compile the application for Mac and 64bit CPUs:
+  $Env:GOOS = "darwin" 
+  $Env:GOARCH = "amd64" 
+  go build main.go
+
+How could you detect a data race in Go code?
+--------------------------------------------
+- Starting with Go 1.1, a new tool called race detector for finding race conditions in Go code was made available.  
+- Using the race detector is simple. We just add a -race flag to our normal Go command-line tool.
+- When the -race command-line flag is set, the compiler inspects all memory accesses with code that records when and how the memory was accessed.
+- In the meantime,  the runtime library watches for unsynchronized access to shared variables. 
+- Example of running a Go program with the race detector: go run -race main.go
+
+// go run -race command_with_args.go twitter facebook whatsapp
+// go test -race

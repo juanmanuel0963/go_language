@@ -1,0 +1,37 @@
+What is the string data type in Golang, and how is it represented?
+------------------------------------------------------------------
+- A string is a series of byte values. 
+- It’s a slice of bytes, and any byte slice can be encoded in a string value. 
+- So we can encode anything in a string, even beyond just Unicode text, like images or binary applications.
+
+Can you change a specific character in a string?
+------------------------------------------------
+- No. Strings are immutable (read-only) data types and you cannot change them. 
+- If we try to change a specific character in a string, we’ll get a runtime error.
+
+How can you concatenate string values? What happens when concatenating strings?
+-------------------------------------------------------------------------------
+- To concatenate strings, we can use the addition operator (+). 
+- Note that each time we concatenate to a string value, Go creates a new string. 
+- That’s because strings are immutable in Go, making this inefficient.
+- There is an efficient and recommended way to concatenate string values and that is to use the strings.Builder type, which was introduced in Go 1.10.
+
+What do you understand by Golang string literals?
+-------------------------------------------------
+- String literals are those variables storing string constants that can be a single character or that can be obtained as a result of the concatenation of a sequence of characters.
+- Go provides two types of string literals. They are:
+  - Raw string literals:
+    - Here, the values are uninterrupted character sequences between backquotes. 
+      - For example `uninterrupted \n string`
+  - Interpreted string literals:
+    - Here, the character sequences are enclosed in double quotes. The value may or may not have new lines. 
+      - For example: "interrupted \n string"
+
+
+Can you format a string without printing?
+-----------------------------------------
+- Yes, we can do that by using the Sprintf command as shown in the example below:
+
+  return fmt.Sprintf ("Size: %d MB.", 50)
+
+- The fmt.Sprintf function formats a string and returns the string without printing it

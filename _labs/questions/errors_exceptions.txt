@@ -1,0 +1,32 @@
+Does Go have exceptions?
+------------------------
+- No, Go takes a different approach. 
+- For plain error handling, Go's multi-value returns make it easy to report an error without overloading the return value.
+- Go code uses error values to indicate an abnormal state.
+
+func Open(name string) (file *File, err error)
+{
+    f, err := os.Open("filename.ext")
+    if err != nil {
+        log.Fatal(err)
+    }
+    // do something with the open *File f
+}
+
+In Go, are there any good error handling practices?
+---------------------------------------------------
+- In Go, the errors are nothing but an interface type where any type implementing the single Error() method is considered as an error.
+- Go does not have try/catch methods as in other programming languages for handling the errors.
+- They are instead returned as normal values. Following is the syntax for creating the error interface:
+
+  type error_name interface {
+      Error() string
+  }
+
+- We use this whenever we apprehend that there are possibilities where a function can go wrong during type conversions or network calls. 
+- The function should return an error as its return variable if things go wrong. 
+- The caller has to check this error value and identify the error.
+- Any value other than nil is termed as an error.
+- As part of good error handling practices, guard classes should be used over if-else statements. 
+- They should also be wrapped in a meaningful way as they can be passed up in the call stack.
+- Errors of the same types should not be logged or handled multiple times.

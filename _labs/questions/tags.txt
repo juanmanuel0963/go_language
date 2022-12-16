@@ -1,0 +1,28 @@
+What are the use(s) for tags in Go?
+-----------------------------------
+- A tag for a field allows you to attach meta-information to the field which can be acquired using reflection. 
+- Usually it is used to provide transformation info on how a struct field is encoded to or decoded from another format (or stored/retrieved from a database), 
+  but you can use it to store whatever meta-info you want to, either intended for another package or for your own use.
+- The major use of a tag for a field is that it allows you to attach meta information to a field which can be acquired using reflection.
+- Tags are usually used to provide transformation info on how a struct field is stored or retrieved from a database. 
+- You can also use tags to store whatever meta information you want to add to the field, either for another package or for your own use.
+- By convention, the value of a tag string is a space-separated list of key: “value” pairs. 
+
+type User struct {
+    Name  string `mytag:"MyName"`
+    Email string `mytag:"MyEmail"`
+}
+
+u := User{"Bob", "bob@mycompany.com"}
+t := reflect.TypeOf(u)
+
+for _, fieldName := range []string{"Name", "Email"} {
+    field, found := t.FieldByName(fieldName)
+    if !found {
+        continue
+    }
+    fmt.Printf("\nField: User.%s\n", fieldName)
+    fmt.Printf("\tWhole tag value : %q\n", field.Tag)
+    fmt.Printf("\tValue of 'mytag': %q\n", field.Tag.Get("mytag"))
+}
+

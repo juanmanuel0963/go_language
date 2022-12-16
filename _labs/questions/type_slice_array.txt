@@ -1,0 +1,136 @@
+Explain ARRAY and SLICE types and the differences between them.
+---------------------------------------------------------------
+- Golang has two data structures to handle lists of records: ARRAYS and SLICES.
+- An ARRAY is a composite, indexable type that stores a collection of elements. 
+- An ARRAY has a fixed length. 
+- We specify how many items are in the ARRAY when we declare it.
+- The ARRAY length is part of its type, so arrays cannot be resized. 
+- This is in contrast to a SLICE that has a dynamic length (it can shrink or grow at runtime). 
+- Every element in an ARRAY or SLICE must be of the same type.
+- SLICES are a key data type in Golang and are everywhere.
+
+Give an example of an array and slice declaration.
+--------------------------------------------------
+- Here’s an example of declaring and initializing an array of type [4] string using the short declaration syntax.
+  friends := [4]string{“Dan”, “Diana”, “Paul”, “John”} 
+
+- Here’s an example of declaring and initializing a slice of type [] int using the short declaration syntax.
+  numbers := []int{2, 3, 4, 5}
+
+Explain the backing array of a slice value.
+-------------------------------------------
+- When we create a slice, Go creates a hidden array behind the scenes, called backing or underlying array, and the new slice type variable refers to it.
+- The backing array stores the elements, not the slice. 
+- Go implements a slice as a data structure called slice header, which is the runtime representation of the slice.
+- It contains three fields:
+  1- The address of the backing array (a pointer to the first element of the backing array).
+  2- The length of the slice. The built-in function len() returns it.
+  3- The capacity of the slice which is the size of the backing array after the first element of the slice. It’s returned by the cap() built-in function.
+- Note that a nil slice doesn’t have a backing array, so all the fields in the slice header are equal to zero.
+
+What are the three components of a "slice" in Golang?
+-----------------------------------------------------
+- A slice in Golang is a type of data structure that varies in sequence length and holds elements of the same type.
+- It references an adjacent array segment.
+- Its three components are the pointer, length and capacity.
+  - The pointer refers to the first piece of an array that the slice can access. 
+  - The length is the figure that sums the total elements within the slice.
+  - The capacity is by how much the slice is capable of expanding.
+
+What will the following Go program print out?
+---------------------------------------------
+
+package main
+import "fmt"
+
+func main() {
+    n1 := []int{10, 20, 30, 40}
+    n1 = append(n1, 100)
+    fmt.Println(len(n1), cap(n1))
+}
+
+- The program will print out 5 8 
+- The append() function creates a new backing array with a larger capacity. 
+- This avoids creating a new backing array when the next append() is called.
+
+- Slice capacity = len(array)
+- If len(appended) < len(array), capacity = 2 x len(array)
+- If len(appended) > len(array), capacity = 2 x (last capacity)
+
+
+How can you check if two slices are equal in Golang?
+----------------------------------------------------
+- You need to loop over each of the elements in the slice and test.
+- Equality for slices is not defined.
+- However, there is a bytes. 
+- Equal function if you are comparing values of type []byte.
+
+package slices
+
+func SliceCompare(A_slice []int, B_slice []int) bool {
+
+	if len(A_slice) != len(B_slice) {
+
+		return false
+
+	}
+
+	for i := range A_slice {
+
+		if A_slice[i] != B_slice[i] {
+
+			return false
+
+		}
+
+	}
+
+	return true
+}
+
+How can you sort a slice of custom structs with the help of an example?
+-----------------------------------------------------------------------
+- We can sort slices of custom structs by using sort.Sort and sort.Stable functions.
+- These methods sort any collection that implements sort.Interface interface that has Len(), Less() and Swap() methods as shown in the code below:
+
+type Interface interface {
+        // Find number of elements in collection
+        Len() int
+        
+        // Less method is used for identifying which elements among index i and j are lesser and is used for sorting
+        Less(i, j int) bool
+        
+        // Swap method is used for swapping elements with indexes i and j
+        Swap(i, j int)
+}
+
+- Consider an example of a Human Struct having name and age attributes.
+
+type Human struct {
+    name string
+    age  int
+}
+
+- Also, consider we have a slice of struct Human of type AgeFactor that needs to be sorted based on age.
+- The AgeFactor implements the methods of the sort.Interface. 
+- Then we can call sort.Sort() method on the audience as shown in the below code:
+
+// AgeFactor implements sort.Interface that sorts the slice based on age field.
+type AgeFactor []Human
+func (a AgeFactor) Len() int           { return len(a) }
+func (a AgeFactor) Less(i, j int) bool { return a[i].age < a[j].age }
+func (a AgeFactor) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+
+func main() {
+    audience := []Human{
+        {"Alice", 35},
+        {"Bob", 45},
+        {"James", 25},
+    }
+    sort.Sort(AgeFactor(audience))
+    fmt.Println(audience) 
+}
+
+- This code would output:
+
+[{James 25} {Alice 35} {Bob 45}]

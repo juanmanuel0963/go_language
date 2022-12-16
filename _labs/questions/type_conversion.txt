@@ -1,0 +1,10 @@
+What kind of type conversion is supported by Go?
+------------------------------------------------
+- Go is very strict about explicit typing. 
+- Go supports explicit type conversion to satisfy its strict typing requirements.
+- There is no automatic type promotion or conversion. 
+- Explicit type conversion is required to assign a variable of one type to another.
+
+i := 55      //int
+j := 67.8    //float64
+sum := i + int(j) //j is converted to int

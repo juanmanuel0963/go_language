@@ -1,0 +1,6 @@
+Explain how you can do testing in GO?
+-------------------------------------
+- It has a lightweight testing framework consists of the go test command and the testing package. 
+- To write a test you have to create a file with a name ending in _testing. 
+- Go which contains functions named TestXXX with signature func (t *testing.T). 
+- The test framework runs each such function.

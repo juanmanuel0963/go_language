@@ -1,0 +1,8 @@
+What is an idiomatic way of representing enums in Go?
+-----------------------------------------------------
+- Golang programming language does not support enums directly.
+- You can implement enums using iota and constants.
+- You can implement an enumerated type using the following methods:
+  - By creating a new integer type
+  - By listing its value using iota
+  - By giving the type a String function

@@ -1,0 +1,148 @@
+Explain the difference between concurrency and parallelism in Golang
+--------------------------------------------------------------------
+- Concurrency:
+  - Is when your program can handle multiple tasks at once.
+  - In other words, concurrency is a property of a program that allows you to have multiple tasks in progress at the same time, 
+    but not necessarily executing at the same time. 
+  - The key tools for concurrency in Golang are goroutines and channels. 
+- Parallelism:
+  - Is when your program can execute multiple tasks at once using multiple processors. 
+  - Parallelism is a runtime property where two or more tasks are executed at the same time.
+  - Parallelism can therefore be a means to achieve the property of concurrency, but it is just one of many means available to you.
+- Goroutines:
+  - Are concurrent lightweight threads 
+- Channels:
+  - Allow goroutines to communicate with each other during execution.
+
+Explain why concurrency is not parallelism?
+---------------------------------------
+- Concurrency means loading more goroutines at a time.
+- These goroutines are multiple threads of execution.
+- If one goroutine blocks, another one is picked up and started.
+- On a single-core CPU, we can run only concurrent applications, but they are not run in parallel. They run sequentially
+- On the other hand, parallelism means multiple goroutines are executed at the same time. It requires multiple CPUs.
+- Concurrency and parallelism are related but distinct concepts.
+- Concurrency means independently executing processes or dealing with multiple things at once,
+- While parallelism is the simultaneous execution of processes and requires multiple core CPUs.
+
+What is the purpose of a Goroutine in Golang?
+---------------------------------------------
+- An interviewer may ask this question to gauge how well you understand Golang's ability to run multiple functions at once.
+- In your response, you can state that a goroutine is a function that runs at the same time as other functions.
+- You may also explain that a goroutine helps you attain concurrency when using Golang.
+- A goroutine is a function that runs at the same time as other functions.
+- It is common to think of a goroutine as a lightweight thread that operates concurrently with other functions and has independent implementation.
+- This element helps programmers attain concurrency when they are working with Golang
+- The Go runtime system is responsible for managing all goroutines
+
+What are Goroutines?
+--------------------
+- Goroutines are functions or methods that run concurrently with other functions or methods. 
+- Goroutines can be thought of as light weight threads. 
+- The cost of creating a Goroutine is tiny when compared to a thread. 
+- Its common for Go applications to have thousands of Goroutines running concurrently.
+- A goroutine is a function or method that executes concurrently alongside any other goroutines using a special goroutine thread. 
+- Goroutine threads are more lightweight than standard threads, with most Golang programs using thousands of goroutines at once.
+- To create a goroutine, add the go keyword before the function declaration.
+  go f(x, y, z)
+
+What is a Goroutine? Go deeper into it.
+---------------------------------------
+- A goroutine is a function that is capable of running concurrently with other functions.
+- It’s a lightweight thread of execution.
+- When a Go program is running, the main goroutine is created and launched.
+- Other goroutines are created using the go keyword.
+- So any function that is called using the go keyword before its name becomes a goroutine.
+- The difference between OS threads and goroutines is that OS threads are scheduled by the OS kernel.
+- And this is a slow operation due to the amount of memory access required.
+- The Go runtime contains its scheduler to schedule goroutines.
+- A goroutine is very cheap. 
+- It’s practical to have thousands, even hundreds of thousands, of goroutines.  
+
+Explain what is Goroutine in GO? How you can stop Goroutine?
+--------------------------------------------------------------
+- A Goroutine is a function which is capable of running concurrently with other functions.
+- To stop goroutine, you pass the goroutine  a signal channel, that signal channel is used to push a value into when you want the goroutine to stop.
+- The goroutine polls that channel regularly as soon as it detects a signal, it quits.
+
+What is Go Channel?
+----------------------------------------------------------------------
+- A Channel in Go provides a connection between two goroutines, allowing them to communicate. (???)
+- The data we are sending through or receiving from a channel must always be of the same type. 
+- This is the type specified when we’ve created the channel.
+
+What operations are available on the Channel type?
+--------------------------------------------------
+- A channel is a 2-way messaging object that has two principal operations: send and receive.
+- A send statement transmits a value from one goroutine to another goroutine.
+- It executes a corresponding receive expression. 
+- The transmission goes through the channel.
+- Both operations are written using the channel operator(<-).
+- Channels are used to communicate in between running goroutines.
+
+Write a simple Golang program that uses a Goroutine and a Channel.
+------------------------------------------------------------------
+
+package channels
+
+func SendReceive(n int, ch chan int) {
+
+	//sending into the channel
+	ch <- n * 2
+}
+
+package channels
+
+import (
+	"fmt"
+	"testing"
+)
+
+func TestSendReceive(t *testing.T) {
+
+	// declaring a bidirectional channel that transports data of type int
+	c := make(chan int)
+	fmt.Printf("%T\n", c)
+
+	// starting the goroutine
+	go SendReceive(10, c)
+
+	//receiving data from the channel
+	n := <-c
+	fmt.Println("Value received:", n)
+
+	fmt.Println("Exiting main ...")
+
+}
+
+If you want to grant concurrent data access, is it safer to do so via channels or maps?
+---------------------------------------------------------------------------------------
+- Granting concurrent data access is much safer via channels than it is with maps.
+- Channels feature blocking and locking methods that prevent goroutines from sharing memory in the attendance of several threads.
+- Maps do not come with locking methods, so they are not as safe as channels are.
+- If you use maps, you need to implement direct locking methods to send data through goroutines without compromising data security.
+
+What are the differences between unbuffered and buffered channels?
+------------------------------------------------------------------
+- For unbuffered channel, the sender will block on the channel until the receiver receives the data from the channel, 
+  whilst the receiver will also block on the channel until sender sends data into the channel.
+- For buffered channel, the sender of buffered channel will block when there is no empty slot of the channel, 
+  while the receiver will block on the channel when it is empty.
+
+What is a Data Race?
+--------------------
+- Executing many goroutines at the same time without special handling can introduce an error called “Race Condition” or “Data Race.” 
+- A Data Race occurs when two goroutines are accessing memory at the same time, one of which is writing.
+- Race conditions occur because of unsynchronized access to shared memory. 
+- They are among the most common and hardest to debug types of bugs in concurrent systems. 
+
+How could you detect a data race in Go code?
+--------------------------------------------
+- Starting with Go 1.1, a new tool called race detector for finding race conditions in Go code was made available.  
+- Using the race detector is simple. We just add a -race flag to our normal Go command-line tool.
+- When the -race command-line flag is set, the compiler inspects all memory accesses with code that records when and how the memory was accessed.
+- In the meantime,  the runtime library watches for unsynchronized access to shared variables. 
+- Example of running a Go program with the race detector: go run -race main.go
+
+// go run -race command_with_args.go twitter facebook whatsapp
+// go test -race

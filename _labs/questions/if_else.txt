@@ -1,0 +1,29 @@
+What is the idiomatic Go equivalent of C’s ternary operator? Explain with an example.
+-------------------------------------------------------------------------------------
+- There is no direct equivalent of C’s ternary operator in Go. 
+- You can use an if-else block instead
+- For example:
+
+package if_else
+
+import (
+	"fmt"
+	"testing"
+)
+
+func TestIfElse(t *testing.T) {
+
+	var x, y, result int
+
+	x = 5
+	y = 10
+
+	if x > y {
+		result = x
+	} else {
+		result = y
+	}
+
+	fmt.Println(result)
+
+}

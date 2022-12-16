@@ -1,0 +1,30 @@
+What are Go Interfaces?
+-----------------------
+- Interfaces in Go are different from other languages. 
+- Go Interfaces are a custom type used to specify a set of one or more method signatures.
+- The interface is created using the word “type” followed by the name and the keyword interface.
+- The interfaces can be defined as:
+  - A set of methods
+  - Type
+
+Explain Go interfaces. What are they and how do they work?
+----------------------------------------------------------
+- Interfaces are a special type in Go that define a set of method signatures but do not provide implementations. 
+- Values of interface type can hold any value that implements those methods.
+- Interfaces essentially act as placeholders for methods that will have multiple implementations based on what object is using it.
+- For example, you could implement a geometry interface that defines that all shapes that use this interface must have an implementation of area() and perim().
+
+type geometry interface {
+    area() float64
+    perim() float64
+}
+- An interface is specified as two things.
+  - A set of methods
+  - Also it is referred as type
+
+How do you compare two interfaces in Golang?
+--------------------------------------------
+- You can compare two given interfaces in Golang if:
+  - The interface value is nil, or
+  - The underlying type is the same and comparable. The underlying value also has to be the same. 
+- You can use == or != operators to compare two interface variable.

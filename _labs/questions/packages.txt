@@ -1,0 +1,38 @@
+What are packages in Golang?
+----------------------------
+- Packages in Golang, which programmers may refer to as "Go packages," are directories that store Go files. 
+- These Go files contain source code, so it is helpful for programmers to use Go packages to maintain records of Go files.
+- Programmers store every piece of code, including functions and variables, in Go files.
+- Then, they can transform these files into a single linked package.
+- Within Golang, every source file resides in a package.
+- It is also possible to place multiple packages inside a single larger package for easier organisation.
+
+What are packages in a Go program?
+--------------------------------
+- Packages (pkg) are directories within your Go workspace that contain Go source files or other packages. 
+- Every function, variable, and type from your source files are stored in the linked package. 
+- Every Go source file belongs to a package, which is declared at the top of the file using:
+  package <packagename>
+- You can import and export packages to reuse exported functions or types using:
+  import <packagename>
+- Golang’s standard package is fmt, which contains formatting and printing functionalities like Println().
+
+List out the built in support in GO?
+-------------------------------------
+- The available built-in-support in GO includes:
+  - Container: container/list , container/heap
+  - Web Server: net/http
+  - Cryptography: Crypto/md5 , crypto/sha1
+  - Compression: compress/ gzip
+  - Database: database/sql
+
+  
+What is the recommended Golang package for basic operations on files?
+---------------------------------------------------------------------
+- The OS standard library package provides a platform-independent interface. 
+- We use it for system functionality when working with files. 
+- The OS interface is intended to be uniform across all operating systems. So the programs we create work the same on Windows, Linux, or Mac.
+
+What other Golang packages are used to work with files?
+-------------------------------------------------------
+- There are other Go standard library packages, such as io, ioutil, and bufio. They work with files and provide more functionality.

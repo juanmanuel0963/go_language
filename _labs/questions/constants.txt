@@ -1,0 +1,21 @@
+What is so special about constants in Go?
+-----------------------------------------
+Constants in Go are special.
+- Untyped constants. 
+  - Any constant in golang, named or unnamed, is untyped unless given a type explicitly. 
+  - For example an untyped floating-point constant like 4.5 can be used anywhere a floating-point value is allowed. 
+  - We can use untyped constants to temporarily escape from Go’s strong type system until their evaluation in a type-demanding expression.
+    
+    // untyped integer constant
+    const a = 1
+    var myFloat32 float32 = 4.5
+    var myComplex64 complex64 = 4.5
+
+- Typed constants. 
+  - Constants are typed when you explicitly specify the type in the declaration. 
+  - With typed constants, you lose all the flexibility that comes with untyped constants like assigning them to any variable of compatible type or mixing them in mathematical operations.
+    
+    const typedInt int = 1  
+
+  - Generally we should declare a type for a constant only if it’s absolutely necessary. 
+  - Otherwise, just declare constants without a type.

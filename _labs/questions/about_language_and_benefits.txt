@@ -77,3 +77,22 @@ How does Golang work so fast?
 - One of the most impactful speed-enhancing features of Golang is its storage arrangement.
 - It hyperlinks all the dependency libraries into a single binary file.
 - This reduces the language's reliance on servers, and it minimises the data lag you get from this reliance in some other languages.
+
+Why the Go language was created?
+--------------------------------
+- Go was born out of frustration with existing languages and environments for systems programming.
+- Go is an attempt to have:
+  - an interpreted, dynamically typed language with
+  - the efficiency and safety of a statically typed, compiled language
+  - support for networked and multicore computing
+  - be fast in compilation
+
+Is Go an object-oriented language?
+----------------------------------
+- Yes and no. 
+- Although Go has types and methods and allows an object-oriented style of programming, there is no type hierarchy. 
+- This is in contrast to most object-oriented languages like C++, Java, C#, Scala, and even dynamic languages like Python and Ruby.
+
+What is a Syntax in Golang programming language?
+------------------------------------------------
+- In Go programming language, a syntax is specified using the Extended Backus-Naur Form (EBNF).

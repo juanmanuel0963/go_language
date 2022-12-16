@@ -1,0 +1,153 @@
+Can you return multiple values from a function in Golang?
+---------------------------------------------------------
+- Yes, it is possible to return multiple values from a function in Golang.
+- To produce multiple values, you can send multiple values with the return statement and separate them with a comma.
+- You can also assign the return statement to multiple variables within a single statement. 
+- You may use the reverseValues function to return the values in reverse order or use a more traditional function.
+
+Can Go have optional parameters? Or can I just define two functions with the same name and a different number of arguments?
+---------------------------------------------------------------------------------------------------------------------------
+- Go does not have optional parameters nor does it support method overloading:
+- Method dispatch is simplified if it doesn't need to do type matching as well. 
+- Experience with other languages told us that having a variety of methods with the same name but different signatures was occasionally useful but that it could also be confusing and fragile in practice. 
+- Matching only by name and requiring consistency in the types was a major simplifying decision in Go's type system.
+
+What are Golang methods? 
+------------------------
+- Golang doesn’t have classes, but we can define methods on defined types. 
+- A type may have a method set associated with it which enhances the type with extra behavior.
+- This way a named type has both data and behavior, and represents better a real-world concept.
+- Methods are also known as receiver functions.
+
+List the functions that can stop or suspend the execution of current goroutine, and explain their differences.
+--------------------------------------------------------------------------------------------------------------
+- Four functions can be used to stop or suspend the execution of the current Go Routine:
+  - runtime.Gosched: This is executed automatically as it gives up the CPU core and joins the queue.
+  - runtime.gopark: The Go Routine is blocked until the callback function unlock in argument list returnfalse.
+  - runtime.notesleep: This function will hibernate the thread.
+  - runtime.Goexit: This will stop the execution of goroutine immediately and call defer, but it will not cause panic.
+
+When is the init() function run?
+--------------------------------
+- init() is called after all the variable declarations in the package have evaluated their initializers, 
+  and those are evaluated only after all the imported packages have been initialized.
+- If a package has one or more init() functions they are automatically executed before the main package's main() function is called.
+- import --> const --> var --> init()
+- If a package imports other packages, the imported packages are initialized first.
+- Current package's constant initialized then.
+- Current package's variables are initialized then.
+- Finally, init() function of current package is called.
+
+What are function closures?
+---------------------------
+- Function closures is a function value that references variables from outside its body. 
+- The function may access and assign values to the referenced variables.
+- In this sense the function is "bound" to the variables.
+- For example, the adder function returns a closure. Each closure is bound to its own sum variable.
+
+package main
+
+import "fmt"
+
+func adder() func(int) int {
+	sum := 0
+	return func(x int) int {
+		sum += x
+		return sum
+	}
+}
+
+func main() {
+	pos, neg := adder(), adder()
+	for i := 0; i < 10; i++ {
+		fmt.Println(
+			pos(i),
+			neg(-2*i),
+		)
+	}
+}
+
+Create a Go program that defines a named type and a method (receiver function) for that type.
+------------------------------------------------------------------------------------------------
+
+import (
+	"fmt"
+)
+ 
+// declaring a new type
+type names []string
+ 
+// declaring a method (function receiver)
+func (n names) print() {
+	// n is called method's receiver
+	// n is the actual copy of the names we're working with and is available in the function.
+	// n is like this or self from OOP.
+	// any variable of type names can call this function on itself like variable_name.print()
+ 
+	// iterating and printing all names
+	for i, name := range n {
+		fmt.Println(i, name)
+	}
+}
+ 
+func main() {
+ 
+	// declaring a value of type names
+	friends := names{"Dan", "Marry"}
+	// calling the print() method on friends variable
+	friends.print()
+ 
+	// another way to call a method on a named type
+	names.print(friends)
+}
+
+What do you understand by variadic functions in Go?
+---------------------------------------------------
+
+- The function that takes a variable number of arguments is called a variadic function. 
+- We can pass zero or more parameters in the variadic function. 
+- The best example of a variadic function is fmt.Printf which requires one fixed argument as the first parameter and it can accept any arguments.
+  - The syntax for the variadic function isHere, we see that the type of the last parameter is preceded by the ellipsis symbol (...) which indicates that the function can take any number of parameters if the type is specified.
+  - Inside the variadic function, the ... type can be visualised as a slice. 
+    - We can also pass the existing slice (or multiple slices) of the mentioned type to the function as a second parameter. 
+    - When no values are passed in variadic function, the slice is treated as nil.
+  - These functions are generally used for string formatting.
+  - Variadic parameter can not be specified as return value, but we can return the variable of type slice from the function.
+
+- Consider an example code below:
+
+func function_name(arg1, arg2...type)type{
+    // Some statements
+}
+
+package main
+ 
+import(
+    "fmt"
+    "strings"
+)
+ 
+// Variadic function to join strings and separate them with hyphen
+func joinstring(element...string)string{
+    return strings.Join(element, "-")
+}
+ 
+func main() {
+   
+  // To demonstrate zero argument
+   fmt.Println(joinstring())
+    
+   // To demonstrate multiple arguments
+   fmt.Println(joinstring("Interview", "Bit"))
+   fmt.Println(joinstring("Golang", "Interview", "Questions"))
+    
+}
+
+- Here, we have a variadic function called joinstring that takes a variable number of arguments of a type string. 
+- We are trying to join the arguments separated by the hyphen symbol.
+- We are demonstrating the variadic function behaviour by first passing 0 arguments and then passing multiple arguments to the function.
+- The output of this code is:
+
+Interview-Bit
+Golang-Interview-Questions
+

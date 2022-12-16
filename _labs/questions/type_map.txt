@@ -1,0 +1,31 @@
+Explain the Golang MAP type and its advantages.
+----------------------------------------------
+- A map is a collection type like an array or a slice and stores key:value pairs. 
+- We can think of a map being like a dict in Python or an Object in JS.
+- All the keys and values in a map are statically typed and must have the same type. 
+- Keys and values don’t have to be of the exact type, but all keys must be of the same type, and all values in the map must be of the same type. 
+- For example, all keys are of type string and all values are of type int.
+- We can use any comparable type as a map key.
+- A comparable type is that type that supports the comparison operator.
+- This is the double equals sign (==).
+- The main advantage of maps is that add, get, and delete operations take constant expected time no matter how many entries are in the map. 
+- They offer very fast lookups because maps are backed by HashTables. 
+- Maps are unordered data structures in Golang.
+
+How can we check if the Go map contains a key?
+----------------------------------------------
+- A map, in general, is a collection of elements grouped in key-value pairs.
+- One key refers to one value.
+- Maps provide faster access in terms of O(1) complexity to the values if the key is known.
+- Once the values are stored in key-value pairs in the map, we can retrieve the object by using the key as map_name[key_name]
+- and we can check if the key, say “foo”, is present or not and then perform some operations by using the below code:
+
+if val, isExists := map_obj["foo"]; isExists {
+    //do steps needed here
+}
+
+- From the above code, we can see that two variables are being initialized. 
+- The val variable would get the value corresponding to the key “foo” from the map.
+- If no value is present, we get “zero value” and the other variable isExists will get a bool value that will be set to true if the key “foo” is present in the map else false.
+- Then the isExists condition is evaluated, if the value is true, then the body of the if would be executed.
+
