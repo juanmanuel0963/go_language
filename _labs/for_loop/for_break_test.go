@@ -1,4 +1,4 @@
-package loops
+package for_loop
 
 import (
 	"fmt"
