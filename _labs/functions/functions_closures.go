@@ -1,4 +1,4 @@
-package miscellaneous
+package functions
 
 func adder() func(int) int {
 	sum := 0

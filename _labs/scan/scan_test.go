@@ -1,4 +1,4 @@
-package miscellaneous
+package scan
 
 import (
 	"bufio"

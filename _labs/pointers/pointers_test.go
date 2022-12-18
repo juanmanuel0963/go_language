@@ -1,9 +1,21 @@
-package miscellaneous
+package pointers
 
 import (
 	"fmt"
 	"testing"
 )
+
+// What is the output of the following code snippet?
+func TestMCQ_q1(t *testing.T) {
+	x := 3
+	y := &x
+
+	fmt.Println(*y)
+
+	*y = 4
+
+	fmt.Println(x)
+}
 
 func TestPointers_v1(t *testing.T) {
 

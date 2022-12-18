@@ -96,3 +96,11 @@ Is Go an object-oriented language?
 What is a Syntax in Golang programming language?
 ------------------------------------------------
 - In Go programming language, a syntax is specified using the Extended Backus-Naur Form (EBNF).
+
+Is Go statically typed programming language?
+--------------------------------------------
+- Go (known as Golang) is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson.
+- Go is syntactically similar to C, but with memory safety, garbage collection, structural typing,[6] and CSP-style concurrency.
+- Go's syntax includes changes from C aimed at keeping code concise and readable. 
+- A combined declaration/initialization operator was introduced that allows the programmer to write x := 5 or s := "Testbook!"
+

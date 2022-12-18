@@ -25,6 +25,11 @@ Explain why concurrency is not parallelism?
 - Concurrency means independently executing processes or dealing with multiple things at once,
 - While parallelism is the simultaneous execution of processes and requires multiple core CPUs.
 
+Go supports concurrency ?
+-----------------------
+- Every concurrently executing activity in Go language is known as a Goroutines.
+- A Goroutine is a function or method which executes independently and simultaneously in connection with any other Goroutines present in your program.
+
 What is the purpose of a Goroutine in Golang?
 ---------------------------------------------
 - An interviewer may ask this question to gauge how well you understand Golang's ability to run multiple functions at once.

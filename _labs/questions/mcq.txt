@@ -1,0 +1,219 @@
+1. What is the workspace in GO?
+A. src contains GO source files organized into packages
+B. pkg contains package objects
+C. Both of these [correct]
+D. None
+
+2. How to use custom packages in GO language?
+A. Under the directory of your project place the directory with library files
+B. Refer to the library using its path relative to the root of your workspace consisting the project
+C. Both of these [correct]
+D. None
+
+3. In which of the following method of parameter passing, changes made to the parameter inside the function have an effect on the argument?
+A. call by value
+B. call by reference [correct]
+C. Both of the above
+D. None of the above
+
+
+4. What are all the parts of a function in GO?
+A. Function Name
+B. Parameters
+C. Return Type
+D. All of these [correct]
+
+5. What is a string literal in Go programming?
+A. Raw string literals
+B. Interpreted string literals
+C. Both of the above [correct]
+D. None
+
+6. What are the advantages/ benefits of the Go programming language?
+A. It supports various safety features and CSP-style concurrent programming features
+B. Strings and Maps are built into the language
+C. Functions are first-class objects in this language
+D. All of the above [correct]
+
+7. What are the several built-in supports in Go?
+A. Compression
+B. Database
+C. Cryptography
+D. All of these [correct]
+
+8. What are GO Interfaces?
+A. A set of methods
+B. Also, it is referred to as type
+C. Both of these [correct]
+D. None
+
+9. An rvalue is an expression that cannot have a value assigned to it which means an rvalue may appear on the right- but not the left-hand side of an assignment.
+A. True [correct]
+B. False
+C. Both
+D. None
+
+10. How arrays in GO works differently than C?
+A. If you pass an array to a function, it will receive a copy of the array, not a pointer to it
+B. The size of an array is part of its type. The types [10] int and [20] int are distinct
+C. Both of the above
+D. All of these [correct]
+
+11. In Golang, which of the following transfers control to the labeled statement?
+A. Enum
+B. Goto [correct]
+C. Jump
+D. return
+
+12. What is the output of the following code snippet?
+
+package main
+import ("fmt")
+func main() {
+    x := 3
+    y := &x
+    fmt.Print(*y)
+    *y = 4
+    fmt.Println(x)
+}
+
+A. 34 [correct]
+B. 43
+C. 44
+D. Error
+
+13. What is/are the advantages of GO?
+I. Go supports first class functions
+II. Go supports concurrency
+A. Only I
+B. Only ll
+C. Both l and ll [correct]
+D. None of these
+
+14. Which of the following is false about Golang?
+A. It is designed by Google
+B. It is statically typed programming language
+C. Golang is syntactically similar to Java [correct]
+D. "Testbook!" is valid declaration/initialization
+
+15. _____ is a general-purpose language designed with systems programming in mind.
+A. Django
+B. Go [correct]
+C. Cassendra
+D. Flex    
+
+16. Go was initially developed at Google in year _______ by Robert Griesemer, Rob Pike, and Ken Thompson.
+A. 2005
+B. 2006
+C. 2007 [correct
+D. 2008
+
+17. Which of the following are the benefits of using Go programming?
+A. Compilation time is fast
+B. Support for Interfaces and Type embedding
+C. InBuilt concurrency support
+D. All of the above [correct]
+
+18. Does Go support type inheritance?
+A. Yes [correct]
+B. No
+C. Can be yes or no
+D. Can not say
+
+19. Which of the following is true?
+A. Go support operator overloading
+B. Go support method overloading
+C. Go is a case sensitive programming language [correct]
+D. Go support pointer arithmetics
+
+20. _______ is a way to convert a variable from one data type to another data type.
+A. Interface
+B. GoMap
+C. GoCast
+D. Type casting [correct]
+
+21. Does Go support generic programming
+A. Yes
+B. No [correct]
+C. Can be yes or no
+D. Can not say
+
+22. Which of the following is correct about slice in Go?
+A. Go Slice is an abstraction over Go Array.
+B. It provides many utility functions required on Array and is widely used in Go programming
+C. To define a slice, you can declare it as an array without specifying size or use make function to create the one.
+D. All of the above [correct]
+
+23. which of the following is true about packages in Go?
+A. The first line of the program package defines the package name in which a Go program should lie
+B. It is a must statement as Go programs runs in packages
+C. Each package has a path and name associated with it
+D. All of the above [correct]
+
+24. _______ function is used to delete an entry from the map.
+A. delete() [correct]
+B. drop()
+C. remove()
+D. truncate()
+
+25. Is there uninitialised variables in Go?
+True
+False [correct]
+
+26. Can we do pointer arithmetics in go ?
+True
+False [correct]
+
+27. Which of the following statement is true about for loop statement in Go?
+A. If for loop has conditional statement then it executes until the condition fails.
+B. If for loop has range then it executes for each item in the range.
+C. Both of the above [correct]
+D. None of the above
+
+27. Which of the following statement is true about for loop statement in Go?
+A. If for loop has conditional statement then it executes until the condition fails.
+B. If for loop has range then it executes for each item in the range.
+C. Both of the abovecorrect
+D. None of the above
+
+28. Is map in golang equivalent to dictionary in python ?
+True [correct]
+False
+
+29. Which of the following statement is used to transfers the control to the labeled statement in Go ?
+A. For
+B. Continue
+C. Goto [correct]
+D. None of the above
+
+30. Which of the following function returns the total number of elements present in a slice?
+A. cap()
+B. size()
+C. len() [correct]
+D. None of the above
+
+31. Which of the following options are correct about maps in Go?
+A. delete() function requires map and corresponding key which is to be deleted.
+B. delete() function is used to delete an entry from the map.
+C. Both of the above [correct]
+D. None of the above.
+
+32. What is the default value of type “bool” in Go ?
+True
+False [correct]
+
+33. Which of the following statements are correct about nil pointer in Go?
+A. A pointer that is assigned to nil is called a nil pointer.
+B. Compiler assigns nil value to pointer variable at the time of compilation if you do not assign address to pointer variable.
+C. Both the above [correct]
+D. None of the above
+
+34. Which of the following keyword is used in for loop to skip the remainder of its body and reiterate the loop in Go?
+A. Goto
+B. Break
+C. Continue [correct]
+D. None of the above
+
+35. Can you declared multiple types of variables in single declaration in Go?
+True [correct]
+False

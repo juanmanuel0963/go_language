@@ -1,4 +1,4 @@
-package miscellaneous
+package functions
 
 import "strings"
 

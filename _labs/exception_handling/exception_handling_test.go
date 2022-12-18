@@ -1,4 +1,4 @@
-package miscellaneous
+package exception_handling
 
 import (
 	"fmt"

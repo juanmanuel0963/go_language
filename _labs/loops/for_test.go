@@ -11,7 +11,7 @@ import (
 //	more statements
 //}
 
-func TestLoops(t *testing.T) {
+func TestFor(t *testing.T) {
 	// For loop to print numbers from 1 to 5
 	for j := 1; j <= 5; j++ {
 		fmt.Println(j)

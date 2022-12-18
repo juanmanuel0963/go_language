@@ -10,7 +10,7 @@ import (
 func TestVariableDeclaration(t *testing.T) {
 
 	// 1 - variable declaration, then assignment
-	var age int
+	var age int = 0
 	age = 29
 
 	fmt.Println(age)
