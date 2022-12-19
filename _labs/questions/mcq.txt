@@ -16,7 +16,6 @@ B. call by reference [correct]
 C. Both of the above
 D. None of the above
 
-
 4. What are all the parts of a function in GO?
 A. Function Name
 B. Parameters
@@ -215,5 +214,164 @@ C. Continue [correct]
 D. None of the above
 
 35. Can you declared multiple types of variables in single declaration in Go?
-True [correct]
-False
+A. True [correct]
+B. False
+
+36. Which of the following is/are true about Golang?
+I. Go support operator overloading
+II. Go function return multiple values
+
+A. Only I
+B. Only II [Correct]
+C. Both I and II
+D. Neither I nor II
+
+37. Does Go support pointer arithmetics?
+A. Yes
+B. No [correct]
+
+38. Which of the following is true about select statement in Go?
+A. You can have any number of case statements within a select. Each case is followed by the value to be compared to and a colon.
+B. The type for a case must be the a communication channel operation.
+C. When the channel operation occured the statements following that case will execute.No break is needed in the case statement.
+D. All of the above. [correct]
+
+39. Which of the following is true about call by reference method of parameter passing in Go?
+A. This method copies the address of an argument into the formal parameter.
+B. Inside the function, the address is used to access the actual argument used in the call.
+C. Changes made to the parameter affect the argument.
+D. All of the above. [correct]
+
+40. Which of the following is true about local variables in Go?
+A. Variables that are declared inside a function or block are called local variables.
+B. They can be used only by statements that are inside that function or block of code.
+C. Local variables are not known to functions outside their own.
+D. All of the above. [correct]
+
+
+41. Which of the following is correct about ranges in Go?
+A. The range keyword is used in for loop to iterate over items of an array, slice, channel or map.
+B. With array and slices, it returns the index of the item as integer.
+C. With maps, it returns the key of the next key-value pair.
+D. All of the above. [correct]
+
+42. Which of the following is correct about interfaces in Go?
+A. Go programming provides another data type called interfaces which represents a set of method signatures.
+B. struct data type implements these interfaces to have method definitions for the method signature of the interfaces.
+C. Both of the above. [correct]
+D. None of the above.
+
+43. The first line of the program package defines the package name in which a Go program should lie.
+A. true [correct]
+B. false
+
+44. The type for a case in select statement must be the a communication channel operation.
+A. true [correct]
+B. false
+
+45. Which of the following is true about dynamic type declaration of a variable in Go?
+A. A dynamic type variable declaration requires compiler to interpret the type of variable based on value passed to it.
+B. Compiler don't need a variable to have type statically as a necessary requirement.
+C. Both of the above. [correct]
+D. None of the above.
+
+
+46. Which of the following operator decreases integer value by one in Go?
+A. ++
+B. %
+C. --
+D. None of the above.
+
+47. Can a Go function return multiple values?
+A. true [correct]
+B. false
+
+48. Which of the following is the default value of a local variable in Go?
+A. Undefined
+B. 0 or nil [correct]
+C. Not fixed
+D. None of the above.
+
+49. Which of the following is correct about maps in Go?
+A. delete() function is used to delete an entry from the map.
+B. delete() function requires map and corresponding key which is to be deleted.
+C. Both of the above. [correct]
+D. None of the above.
+
+50. Expressions that refer to a memory location are called "rvalue" expression.
+A. false [correct]
+B. true 
+
+51. Which of the following is true about Go programming language?
+A. Go is a general-purpose language designed with systems programming in mind.
+B. It is strongly and statically typed, provides inbuilt support for garbage collection.
+C. It supports concurrent programming.
+D. All of the above. [correct]
+
+51. Which of the following is true about for loop statement in Go?
+A. if condition is available, then for loop executes as long as condition is true.
+B. if range is available, then for loop executes for each item in the range.
+C. Both of the above. [correct]
+D. None of the above.
+
+52. Which of the following is true about break statement in Go?
+
+A. If you are using nested loops (i.e., one loop inside another loop), 
+   the break statement will stop the execution of the innermost loop and start executing the next line of code after the block.
+   [correct]
+B. If you are using nested loops (i.e., one loop inside another loop), 
+   the break statement will stop the execution of the outermost loop and start executing the next line of code after the block.
+C. Both of the above.
+D. None of the above.
+
+53. Which of the following function can be used to copy a slice to another slice in Go?
+A. append()
+B. copy() [correct]
+C. resize()
+D. None of the above.
+
+54. Which of the following is true about for loop in Go if for clause that is ( init; condition; increment ) is present?
+A. After the body of the for loop executes, the flow of control jumps back up to the increment statement.
+B. Increment statement allows you to update any loop control variables. This statement can be left blank, as long as a semicolon appears after the condition.
+C. The condition is now evaluated again. If it is true, the loop executes and the process repeats itself (body of loop, then increment step, and then again condition). After the condition becomes false, the for loop terminates.
+D. All of the above. [correct]
+
+55. In Go language, Pointer types are derived types.
+A. false
+B. true [correct]
+
+56. An lvalue may appear as either the left-hand or right-hand side of an assignment.
+A. false
+B. true [correct]
+
+57. Which of the following operator gives remainder of after an integer division in Go?
+
+A. ^
+B. % [correct]
+C. $
+D. None of the above.
+
+58. Can a Go function be created on the fly and used as values?
+A. true [correct]
+B. false
+
+59. Which of the following is correct about structures in Go?
+A. To access any member of a structure, we use the member access operator (.).
+B. You would use struct keyword to define variables of structure type.
+C. You can pass a structure as a function argument in very similar way as you pass any other variable or pointer.
+D. All of the above. [correct]
+
+60. Which of the following function returns the total number of elements present in a slice?
+A. size()
+B. len() [correct]
+C. cap()
+D. None of the above.
+
+61. Go supports type inheritance.
+
+A. true
+B. false [correct]
+
+62. In Go language, Array types are inbuilt types.
+A. false [correct]. No! Array types are derived types.
+B. true

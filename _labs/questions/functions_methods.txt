@@ -250,3 +250,10 @@ What are first class functions?
 			fmt.Println("a =", a)
 		}()
 	}
+
+What are Formal Parameters?
+---------------------------
+- By default, Golang uses the call by value way to pass the arguments to the function. 
+- Basic Terms in Parameter Passing to Function: 
+  - The parameters passed to function are called Actual Parameters. 
+  - The parameters received by the function are called Formal Parameters.
