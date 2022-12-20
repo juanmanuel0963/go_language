@@ -167,3 +167,153 @@ func TestMCQ_q9(t *testing.T) {
 	})
 	fmt.Println(r)
 }
+
+func PrintHello() {
+	fmt.Println("Hello")
+}
+
+// what is the output of below code snippet
+func TestMCQ_q10(t *testing.T) {
+
+	fmt.Println("Start")
+
+	go PrintHello()
+
+	fmt.Println("User")
+
+}
+
+// What is the output of below code snippet
+func TestMCQ_q11(t *testing.T) {
+
+	ch := make(chan int)
+	ch <- 1
+	get := <-ch
+	fmt.Println(get)
+	//panic: test timed out after 30s
+}
+
+func printChannel(ch chan int) {
+	fmt.Println(<-ch)
+}
+
+func printChannel2In(ch chan int) {
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
+}
+
+// What is the output of below code snippet
+func TestMCQ_q12(t *testing.T) {
+
+	ch := make(chan int)
+	ch <- 1
+	go printChannel(ch)
+	fmt.Println("Done")
+	//panic: test timed out after 30s
+}
+
+// What is the output of below code snippet
+func TestMCQ_q13(t *testing.T) {
+
+	ch := make(chan int, 1)
+	ch <- 1
+	go printChannel(ch)
+	fmt.Println("Done")
+	//Done
+	//1
+}
+
+func TestMCQ_q14(t *testing.T) {
+
+	ch := make(chan int)
+	go printChannel2In(ch)
+	ch <- 1
+	ch <- 2
+	fmt.Println("Done")
+
+	//1
+	//2
+	//Done
+}
+
+func printChannelWait(ch chan int) {
+	fmt.Println(<-ch + <-ch)
+}
+
+func TestMCQ_q15(t *testing.T) {
+
+	ch := make(chan int)
+	go printChannelWait(ch)
+	ch <- 2
+	ch <- 3
+	fmt.Println("Done")
+
+	//Done
+	//5
+}
+
+/*
+func sum[int, int Number](a, b Number) Number {
+	return a + b
+}
+
+func TestMCQ_q16(t *testing.T) {
+
+	fmt.Println(sum(2, 3))
+	//undeclared name: Number (compile)
+}
+*/
+/*
+func sum[int Number](a, b Number) Number {
+	return a + b
+}
+
+func TestMCQ_q17(t *testing.T) {
+
+	fmt.Println(sum(2, 3))
+	//undeclared name: Number (compile)
+}
+*/
+/*
+func sum(a, b any) any {
+	return a + b
+}
+func TestMCQ_q18(t *testing.T) {
+
+	fmt.Println(sum(2, 3))
+
+	//invalid operation: operator + not defined on a (variable of type any) (compile)go
+}
+*/
+/*
+type Number interface {
+	int
+}
+
+func sum[T Number](a, b Number) T {
+	return a + b
+}
+func TestMCQ_q19(t *testing.T) {
+
+	fmt.Println(sum(2, 3))
+
+	//cannot use type Number outside a type constraint: interface contains type constraints
+}
+*/
+type Number interface {
+	int
+}
+
+func sum[T Number](a, b T) T {
+	return a + b
+}
+
+func TestMCQ_q20(t *testing.T) {
+
+	fmt.Println(sum(2, 3))
+
+	//5
+}
+
+//Let's continue here
+//https://www.allindiaexams.in/engineering/cse/go-mcq-quiz-go-online-test

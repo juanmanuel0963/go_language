@@ -375,3 +375,50 @@ B. false [correct]
 62. In Go language, Array types are inbuilt types.
 A. false [correct]. No! Array types are derived types.
 B. true
+
+63. Is Go a case sensitive language?
+A. yes [correct]
+B. no
+
+64. Which of the following is true about global variables in Go?
+A. Global variables are defined outside of a function, usually on top of the program.
+B. The global variables will hold their value throughout the lifetime of your program.
+C. A global variable is available for use throughout your entire program after its declaration.
+D. All of the Above [correct]
+
+63. Which of the following is true about static type declaration of a variable in Go?
+A. Static type variable declaration provides assurance to the compiler that there is one variable existing with the given type and name
+B. A variable declaration has its meaning at the time of compilation only, compiler needs actual variable declaration at the time of linking of the program
+C. Both of the above [correct]
+D. None of the above
+
+64. Explain how arrays in GO works differently then C?
+A. Arrays are values, assigning one array to another copies all the elements
+B. If you pass an array to a function, it will receive a copy of the array, not a pointer to it
+C. The size of an array is part of its type. The types [10] int and [20] int are distinct
+D. All of these [correct]
+
+65. Which one of the following is correct?
+A. const Pi = 3.14
+B. const Pi = math.Pi
+C. Both A and B are correct [correct]
+D. None of the above
+
+66. What are the advantages of GO?
+A. GO compiles very quickly
+B. Go supports concurrency at the language level
+C. Functions are firstclass objects in GO
+D. All of these [correct]
+
+67. Which of the following is initial value (zero value) for interfaces, slice, pointers, maps, channels and functions?
+A. 0
+B. ""
+C. Nil [correct]
+D. False
+
+68. What are the benefits of using Go Programming?
+A. Support for environment adopting patterns similar to dynamic languages.
+B. Compilation time is fast
+C. InBuilt concurrency support: light-weight processes (via goroutines), channels, select statement
+D. All of the above [correct]
+
