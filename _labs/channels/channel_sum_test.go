@@ -115,4 +115,5 @@ func TestIsPrime_v4(t *testing.T) {
 		msg = <-cOut
 		fmt.Println(msg.num, "Is prime: ", msg.isPrime)
 	}
+
 }

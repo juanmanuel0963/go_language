@@ -25,7 +25,7 @@ func TestOnOff(t *testing.T) {
 
 	////-------NetflixChannel--------------
 
-	// Making a channel of value type struct
+	// Making a channel of value type string
 	myNetflixChannel := make(chan string)
 
 	// Starting a concurrent goroutine

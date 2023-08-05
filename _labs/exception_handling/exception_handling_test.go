@@ -18,7 +18,7 @@ func TestExceptionHandling(t *testing.T) {
 	}
 
 	if f != nil {
-		fmt.Println("File name: ")
+		fmt.Println("File name found: ")
 		fmt.Println(f.Name())
 	}
 

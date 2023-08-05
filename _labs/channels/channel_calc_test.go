@@ -9,10 +9,10 @@ func TestCalc(t *testing.T) {
 
 	number := 2
 
-	// Making a channel of value type string
+	// Making a channel of value type int
 	sqrch := make(chan int)
 
-	// Making a channel of value type string
+	// Making a channel of value type int
 	cubech := make(chan int)
 
 	// Starting a concurrent goroutine
