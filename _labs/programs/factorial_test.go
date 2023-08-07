@@ -34,8 +34,8 @@ func TestFactorial(t *testing.T) {
 		},
 		{
 			"test1",
-			args{7},
-			5040,
+			args{3},
+			6,
 		},
 		// TODO: Add test cases.
 	}

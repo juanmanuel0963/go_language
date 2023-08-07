@@ -11,7 +11,7 @@ type Person struct {
 type Animal struct {
 	name string
 	size int
-	sons []string
+	//sons []string
 }
 
 func StrucsCompare_Persons(a Person, b Person) bool {

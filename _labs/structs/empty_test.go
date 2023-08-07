@@ -22,7 +22,7 @@ func TestEmptyStructs_v2(t *testing.T) {
 		set[value] = struct{}{}
 	}
 	fmt.Println(set)
-	// Output: map[orange:{} apple:{}]
+	// Output: map[apple:{} orange:{} strawberry:{}]
 }
 
 // When you need a channel to signal an event, but do not really need to send any data.

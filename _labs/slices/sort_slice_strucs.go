@@ -17,6 +17,7 @@ type Human struct {
 // AgeFactor implements sort.Interface that sorts the slice based on age field.
 type AgeFactor []Human
 
-func (a AgeFactor) Len() int           { return len(a) }
+func (a AgeFactor) Len() int { return len(a) }
+
 func (a AgeFactor) Less(i, j int) bool { return a[i].age < a[j].age }
 func (a AgeFactor) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }

@@ -20,6 +20,8 @@ func TestQueues_v1(t *testing.T) {
 
 	v := queue.Dequeue()
 	fmt.Println(v)
+	fmt.Println(" ")
+
 	assert.Equal(t, 4, len(queue))
 
 	assert.Equal(t, false, queue.Empty())
@@ -27,4 +29,5 @@ func TestQueues_v1(t *testing.T) {
 	for _, e := range queue {
 		fmt.Println(e)
 	}
+
 }

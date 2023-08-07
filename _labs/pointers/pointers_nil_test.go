@@ -10,11 +10,11 @@ import (
 func TestNilPointer(t *testing.T) {
 	type Temp struct {
 	}
-	var pnt *Temp       // pointer
-	var inf interface{} // interface declaration
-	inf = pnt           // inf is a non-nil interface holding a nil pointer (pnt)
+	var pnt *Temp              // pointer
+	var intf interface{} = pnt // interface declaration
+	//intf = pnt                 // inf is a non-nil interface holding a nil pointer (pnt)
 
 	fmt.Printf("pnt is a nil pointer: %v\n", pnt == nil)
-	fmt.Printf("inf is a nil interface: %v\n", inf == nil)
-	fmt.Printf("inf is a interface holding a nil pointer: %v\n", inf == (*Temp)(nil))
+	fmt.Printf("intf is a nil interface: %v\n", intf == nil)
+	fmt.Printf("intf is an interface holding a nil pointer: %v\n", intf == (*Temp)(nil))
 }

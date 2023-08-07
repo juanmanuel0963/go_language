@@ -15,6 +15,7 @@ func TestTypeConversion_v1(t *testing.T) {
 	float_to_int := int(j) //j is converted to int
 	fmt.Println(float_to_int)
 	sum := i + float_to_int
+	fmt.Println("Sum: " + strconv.Itoa(sum))
 	fmt.Printf("Type of sum is %T", sum)
 	fmt.Println()
 

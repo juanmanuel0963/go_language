@@ -15,6 +15,8 @@ func SliceSwap2_v1(my_slice []int) []int {
 		j = j - 1
 	}
 
+	fmt.Println(my_slice)
+
 	return my_slice
 }
 
@@ -27,6 +29,8 @@ func SliceSwap2_v2(my_slice []int) []int {
 		fmt.Println(my_slice[i])
 
 	}
+
+	fmt.Println(my_slice)
 
 	return my_slice
 }

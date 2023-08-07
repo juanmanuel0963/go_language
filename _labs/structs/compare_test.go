@@ -1,7 +1,6 @@
 package structs
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -48,6 +47,7 @@ func TestStrucsCompare_v2(t *testing.T) {
 	}
 }
 
+/*
 // Ensure that they don’t contain slices, maps, or functions. Otherwise, the code won’t comply.
 func TestStructCompare_v3(t *testing.T) {
 	type Bar struct{ A []int }
@@ -57,12 +57,16 @@ func TestStructCompare_v3(t *testing.T) {
 
 	fmt.Println(a == b)
 }
-
+*/
 // Ensure that they don’t contain slices, maps, or functions. Otherwise, the code won’t comply.
 func TestStructCompare_v4(t *testing.T) {
 
-	animal_a := Animal{name: "Perro", size: 80, sons: []string{"Jacob"}}
-	animal_b := Animal{name: "Gato", size: 50, sons: []string{"Gora"}}
+	//animal_a := Animal{name: "Perro", size: 80, sons: []string{"Jacob"}}
+	//animal_b := Animal{name: "Gato", size: 50, sons: []string{"Gora"}}
 
-	equal, err := (animal_a == animal_b)
+	animal_a := Animal{name: "Perro", size: 80}
+	animal_b := Animal{name: "Gato", size: 50}
+
+	assert.Equal(t, false, animal_a == animal_b)
+
 }

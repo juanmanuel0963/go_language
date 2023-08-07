@@ -163,7 +163,7 @@ func iMap(s []int, f func(int) int) []int {
 func TestMCQ_q9(t *testing.T) {
 	a := []int{5, 6, 7, 8, 9}
 	r := iMap(a, func(n int) int {
-		return n * 5
+		return n * 6
 	})
 	fmt.Println(r)
 }
@@ -215,7 +215,7 @@ func TestMCQ_q12(t *testing.T) {
 // What is the output of below code snippet
 func TestMCQ_q13(t *testing.T) {
 
-	ch := make(chan int, 1)
+	ch := make(chan int, 2)
 	ch <- 1
 	go printChannel(ch)
 	fmt.Println("Done")
