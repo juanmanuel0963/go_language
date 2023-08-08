@@ -28,7 +28,7 @@ B. Interpreted string literals
 C. Both of the above [correct]
 D. None
 
-6. What are the advantages/ benefits of the Go programming language?
+6. What are the advantages/benefits of the Go programming language?
 A. It supports various safety features and CSP-style concurrent programming features
 B. Strings and Maps are built into the language
 C. Functions are first-class objects in this language
@@ -104,7 +104,7 @@ D. Flex
 16. Go was initially developed at Google in year _______ by Robert Griesemer, Rob Pike, and Ken Thompson.
 A. 2005
 B. 2006
-C. 2007 [correct
+C. 2007 [correct]
 D. 2008
 
 17. Which of the following are the benefits of using Go programming?
@@ -257,7 +257,7 @@ D. All of the above. [correct]
 
 42. Which of the following is correct about interfaces in Go?
 A. Go programming provides another data type called interfaces which represents a set of method signatures.
-B. struct data type implements these interfaces to have method definitions for the method signature of the interfaces.
+B. Struct data type implements these interfaces to have method definitions for the method signature of the interfaces.
 C. Both of the above. [correct]
 D. None of the above.
 
@@ -279,7 +279,7 @@ D. None of the above.
 46. Which of the following operator decreases integer value by one in Go?
 A. ++
 B. %
-C. --
+C. -- [correct]
 D. None of the above.
 
 47. Can a Go function return multiple values?
