@@ -23,7 +23,7 @@ func main() {
 
 	var x int = 2                                                                  // -> int value
 	ptr := &x                                                                      // -> pointer to int
-	fmt.Printf("ptr is of type %T with value %v and address %p\n", ptr, ptr, &ptr) // -> the pointer is saved at an address as well
+	fmt.Printf("ptr is of type %T with value %v and address %p\n", ptr, *ptr, &ptr) // -> the pointer is saved at an address as well
 }
 
 What are the advantages of passing pointers to functions?
