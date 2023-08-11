@@ -14,7 +14,6 @@ What data types does Golang use?
   - Map
   - Channel
 
-  
 Boolean types
 -------------
 - They are boolean types and consists of the two predefined constants: (a) true (b) false.
@@ -48,7 +47,6 @@ Aggregate types
 This are collectively referred to as aggregate types:
 - Array types and 
 - Structure types 
-
 
 Integer Types
 -------------

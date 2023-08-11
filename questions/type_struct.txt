@@ -31,8 +31,8 @@ func demo_func(s *DemoStruct) {
 
 - A. Since the function has a return type of the struct, the function returns a copy of the struct by setting the value as 1.
 - B. Since the function returns *DemoStruct, which is a pointer to the struct, it returns a pointer to the struct value created within the function.
-- C. Since the function expects the existing struct object as a parameter and in the function, we are setting the value of its attribute, at the end of execution the value of Val variable of the struct object is set to 1.
-
+- C. Since the function expects the existing struct object as a parameter and in the function, 
+     we are setting the value of its attribute, at the end of execution the value of Val variable of the struct object is set to 1.
 
 Why would you prefer to use an empty struct{}?
 ----------------------------------------------
@@ -83,7 +83,7 @@ map[interviewbit:{} golang:{} questions:{}]
 func workerRoutine(ch chan struct{}) {
     // Receive message from main program.
     <-ch
-    println("Signal Received")
+    println("Signal 1 Received")
 
     // Send a message to the main program.
     close(ch)
@@ -101,20 +101,19 @@ func main() {
 
     // Receive a message from the workerRoutine.
     <-ch
-    println(“Signal Received")
+    println(“Signal 2 Received")
     
 }
 
 - The output of the code would be:
 
-Signal Received
-Signal Received
+Signal 1 Received
+Signal 2 Received
 
 How can you compare two structures? Give an example.
 -----------------------------------------------------
 - You can use the == operator to compare two structures. 
 - Ensure that they don’t contain slices, maps, or functions. Otherwise, the code won’t comply.
-
 
 What are anonymous structs and anonymous struct fields? Give an example of such a struct declaration.
 -----------------------------------------------------------------------------------------------------
