@@ -23,7 +23,7 @@ List the functions that can stop or suspend the execution of current goroutine, 
 --------------------------------------------------------------------------------------------------------------
 - Four functions can be used to stop or suspend the execution of the current Go Routine:
   - runtime.Gosched: This is executed automatically as it gives up the CPU core and joins the queue.
-  - runtime.gopark: The Go Routine is blocked until the callback function unlock in argument list returnfalse.
+  - runtime.gopark: The Go Routine is blocked until the callback function unlock in argument list return false.
   - runtime.notesleep: This function will hibernate the thread.
   - runtime.Goexit: This will stop the execution of goroutine immediately and call defer, but it will not cause panic.
 

@@ -22,6 +22,6 @@ func main() {
 
 	// Println() function from fmt package prints out a line to stdout
 	fmt.Println("Today is", today) // => Today is Monday
-	fmt.Println("You age is", age) // => You age is 17
+	fmt.Println("Your age is", age) // => Your age is 17
 
 }

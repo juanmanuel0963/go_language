@@ -6,3 +6,23 @@ What is an idiomatic way of representing enums in Go?
   - By creating a new integer type
   - By listing its value using iota
   - By giving the type a String function
+
+
+The iota keyword represents successive integer constants 0, 1, 2,…
+It resets to 0 whenever the word const appears in the source code,
+and increments after each const specification.
+
+const (
+	C0 = iota
+	C1 = iota
+	C2 = iota
+)
+fmt.Println(C0, C1, C2) // "0 1 2"
+
+This can be simplified to
+
+const (
+	C0 = iota
+	C1
+	C2
+)

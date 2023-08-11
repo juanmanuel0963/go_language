@@ -114,8 +114,8 @@ C. InBuilt concurrency support
 D. All of the above [correct]
 
 18. Does Go support type inheritance?
-A. Yes [correct]
-B. No
+A. Yes 
+B. No [correct]
 C. Can be yes or no
 D. Can not say
 
@@ -143,7 +143,7 @@ B. It provides many utility functions required on Array and is widely used in Go
 C. To define a slice, you can declare it as an array without specifying size or use make function to create the one.
 D. All of the above [correct]
 
-23. which of the following is true about packages in Go?
+23. Which of the following is true about packages in Go?
 A. The first line of the program package defines the package name in which a Go program should lie
 B. It is a must statement as Go programs runs in packages
 C. Each package has a path and name associated with it
@@ -172,12 +172,12 @@ D. None of the above
 27. Which of the following statement is true about for loop statement in Go?
 A. If for loop has conditional statement then it executes until the condition fails.
 B. If for loop has range then it executes for each item in the range.
-C. Both of the abovecorrect
+C. Both of the above [correct]
 D. None of the above
 
 28. Is map in golang equivalent to dictionary in python ?
-True [correct]
-False
+A. True [correct]
+B. False
 
 29. Which of the following statement is used to transfers the control to the labeled statement in Go ?
 A. For
@@ -265,7 +265,7 @@ D. None of the above.
 A. true [correct]
 B. false
 
-44. The type for a case in select statement must be the a communication channel operation.
+44. The type for a case in select statement must be the communication channel operation.
 A. true [correct]
 B. false
 
@@ -274,7 +274,6 @@ A. A dynamic type variable declaration requires compiler to interpret the type o
 B. Compiler don't need a variable to have type statically as a necessary requirement.
 C. Both of the above. [correct]
 D. None of the above.
-
 
 46. Which of the following operator decreases integer value by one in Go?
 A. ++
