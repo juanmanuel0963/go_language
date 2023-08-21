@@ -13,7 +13,7 @@ func TestFormatting(t *testing.T) {
 	s = fmt.Sprintf("%d %s\n", 100, "MB.")
 	fmt.Println(s)
 
-	s = fmt.Sprintf("Orignal Array Len: %v", 200)
+	s = fmt.Sprintf("Orignal Array Len: %v", 20000)
 	fmt.Println(s)
 
 	const (

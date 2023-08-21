@@ -25,10 +25,10 @@ func TestLenghtCapacity_v1(t *testing.T) {
 	assert.Equal(t, 6, arrayLen)
 
 	// ----------Creating a slice-------------
-	slicedArray := array[1:4] //Pointer to position 1 until position 4-1 = 3
+	slicedArray := array[1:4] //Pointer to position 1 until index 3 [0,1,2,3]
 
 	// Display slice
-	fmt.Println("Sliced Array:", slicedArray)
+	fmt.Println("Sliced Array:", slicedArray) //is a Go
 
 	// Length of slice calculated using len()--------- Positions 1, 2, 3
 	sliceArrayLen := len(slicedArray)
