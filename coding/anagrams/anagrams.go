@@ -8,55 +8,38 @@ import (
 
 // Receives an array of words and returns a map with matching anagrams words
 func findAnagrams(wordsDictionary []string) map[string][]string {
-
 	//Declares matrix of chars. Each rows is a word of the dictionary
 	var runeWords [][]rune
-
 	//Declares map (hash) to save the word (key) and array of anagrams (value)
 	anagrams := make(map[string][]string)
-
 	//Step 1. We need to convert the array of words into a matrix of chars
-
 	//Iterates each word in the dictionary
 	for _, word := range wordsDictionary {
-
 		//Array of chars for the current word
 		var runeLetters []rune
-
 		//Iterates the word and fetch each letter
 		for _, letter := range word {
-
 			//Adds the letter to the array of chars
 			runeLetters = append(runeLetters, letter)
 		}
-
 		//Adds the word (as array of chars) to the matrix of words
 		runeWords = append(runeWords, runeLetters)
-
 		//Adds a new key to the anagrams map (hash)
 		anagrams[string(word)] = nil
 	}
-
 	//Step 2. Once we have the words dictionary converted into a matrix of chars, we can take each word (row) and find the permutations
-
 	//Iterates each row of the matrix
 	for _, wordLetters := range runeWords {
-
 		//Finds the permutations for the word. It returns a matrix and each row is a permutation
 		permutations := permuteLetters(wordLetters)
-
 		//For each permutation
 		for _, perm := range permutations {
-
 			//Checks if the permutations is equal to any word in the dictionary. It compares the permutation agains the map(hash) of dictionary words
 			if myAnagrams, found := anagrams[string(perm)]; found {
-
 				//if the permutations is not part of its parent word
 				if string(wordLetters) != string(perm) {
-
 					//If the permutation's parent word is not added yet to the anagrams list
 					contains := slices.Contains(myAnagrams, string(wordLetters)) // true
-
 					if !contains {
 						//Adds the permutation's parent word to the array of anagrams for the found key (dictionary words)
 						myAnagrams = append(myAnagrams, string(wordLetters))
