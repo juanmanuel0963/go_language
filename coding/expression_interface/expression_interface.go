@@ -18,8 +18,8 @@ type StringAddition struct {
 	expression string
 }
 
-func getResult(e Expresion) int {
-	return e.result()
+func getResult(i Expresion) int {
+	return i.result()
 }
 
 func (s StringMultiplication) result() int {
