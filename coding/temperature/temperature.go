@@ -37,6 +37,7 @@ func abs(n int) int {
 	return n
 }
 func main() {
+
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Buffer(make([]byte, 1000000), 1000000)
 	var inputs []string
@@ -60,4 +61,5 @@ func main() {
 	solution := ComputeClosestToZero(ts)
 	os.Stdout = stdoutWriter
 	fmt.Println(solution)
+
 }

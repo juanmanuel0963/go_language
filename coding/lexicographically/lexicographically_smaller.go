@@ -20,7 +20,7 @@ func lexicographically_smaller(s string, t string) int {
 
 	//fmt.Println(sList)
 
-	//Go through t and check each char, if it's a number supress the char and sabe the new string in tList
+	//Go through t and check each char, if it's a number supress the char and save the new string in tList
 	tList := []string{}
 
 	for i := 0; i < len(t); i++ {

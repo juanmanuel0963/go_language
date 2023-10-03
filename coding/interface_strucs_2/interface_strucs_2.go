@@ -18,10 +18,6 @@ type StringAddition struct {
 	expression string
 }
 
-func getResult(i Expresion) int {
-	return i.result()
-}
-
 func (s StringMultiplication) result() int {
 	a, _ := strconv.Atoi(string(s.expression[0]))
 	b, _ := strconv.Atoi(string(s.expression[2]))
@@ -34,6 +30,10 @@ func (s StringAddition) result() int {
 	b, _ := strconv.Atoi(string(s.expression[2]))
 
 	return a + b
+}
+
+func getResult(i Expresion) int {
+	return i.result()
 }
 
 func generateVal(channel chan int, query string) {

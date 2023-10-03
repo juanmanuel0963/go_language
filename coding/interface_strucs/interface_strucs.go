@@ -11,12 +11,12 @@ type MyError struct {
 	Msg string
 }
 
-func getError(i CustomErrors) string {
-	return i.Error()
-}
-
 func (s MyError) Error() string {
 	return s.Msg
+}
+
+func getError(i CustomErrors) string {
+	return i.Error()
 }
 
 func main() {
