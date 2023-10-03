@@ -22,6 +22,21 @@ func IsPalindrome(inputWord string) bool {
 	return (inputWord == theString)
 }
 
+func solution(inputString string) bool {
+
+	outputString := ""
+	//Go reverse throught the inputString
+	for i := len(inputString) - 1; i >= 0; i-- {
+
+		//Save the chars in a new string
+		outputString += string(inputString[i])
+	}
+
+	fmt.Println(outputString)
+
+	return inputString == outputString
+}
+
 func main() {
 
 	var isPalindrome = IsPalindrome("JUAN")
