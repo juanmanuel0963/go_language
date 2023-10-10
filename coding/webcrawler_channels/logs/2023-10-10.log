@@ -1,0 +1,2 @@
+ERROR: 2023/10/10 11:15:15 webcrawler.go:307: 2023-10-10 11:15:15 - Domain: https://parserdigital.com Message: Error fetching https://parserdigital.com/careers-career-opportunities Status Code 404 Error: %!s(<nil>)
+ERROR: 2023/10/10 11:16:53 webcrawler.go:310: 2023-10-10 11:16:53 - Domain: https://parserdigital.com Message: Error saving JSON to file. Error: this is the error
