@@ -1,0 +1,192 @@
+package main
+
+import (
+	"fmt"
+	"io"
+	"log"
+	"net/http"
+	"os"
+	"strings"
+	"time"
+
+	"golang.org/x/net/html"
+)
+
+type Pages struct {
+	visited      map[string]bool
+	found        map[string]bool
+	levelCounter map[int]int
+}
+
+// TreeNode struct definition
+type TreeNode struct {
+	name string
+	sons []*TreeNode
+}
+
+var baseDomain = ""
+var pagesCrawled Pages
+
+func main() {
+	if len(os.Args) != 2 {
+		fmt.Println("Usage: go run webcrawler.go <starting_url>")
+		os.Exit(1)
+	}
+
+	pagesCrawled.levelCounter = make(map[int]int)
+	pagesCrawled.visited = make(map[string]bool)
+	pagesCrawled.found = make(map[string]bool)
+
+	startingURL := os.Args[1]
+	baseDomain = getBaseDomain(startingURL)
+
+	// Create the root node
+	root := NewTreeNode(startingURL)
+
+	startTime := time.Now() // Start the timer
+
+	RecursiveCrawl(startingURL, 0, 0, root)
+
+	// Print the tree
+	PrintTree(root, 0)
+
+	elapsed := time.Since(startTime)
+	fmt.Printf("Total time taken: %s\n", elapsed)
+}
+
+func RecursiveCrawl(parentURL string, level int, parent int, parentNode *TreeNode) {
+
+	if level < 3 {
+
+		//If this page has not been visited previously
+		foundLinks := Crawl(parentURL)
+		fmt.Printf("\nLevel:%v, Parent: %v, %s, \n", level, parent, parentURL)
+		counter := 0
+		for sonURL := range foundLinks {
+			counter += 1
+			//fmt.Printf("Son %v: %s\n", counter, sonURL)
+			//Create son node
+			sonNode := NewTreeNode(sonURL)
+			parentNode.AddSon(sonNode)
+			RecursiveCrawl(sonURL, level+1, counter, sonNode)
+		}
+		counter = 0
+	}
+}
+
+func Crawl(parentURL string) map[string]bool {
+
+	//fmt.Printf("Visiting: %s \n", sURL)
+
+	//Variable for saving the found links
+	foundLinks := make(map[string]bool, 0)
+
+	//If this page has been visited previously
+	if pagesCrawled.visited[parentURL] {
+		return foundLinks
+	}
+
+	//Set this page has visited
+	pagesCrawled.visited[parentURL] = true
+
+	//Invoques the URL
+	response, err := http.Get(parentURL)
+
+	//Error fetching the URL
+	if err != nil {
+		fmt.Printf("Error fetching %s: %v\n", parentURL, err)
+		return foundLinks
+	}
+
+	//Defers the body closing after has been processed
+	defer response.Body.Close()
+
+	//Page not found or internal server error
+	if response.StatusCode != http.StatusOK {
+		fmt.Printf("Error fetching %s: Status Code %d\n", parentURL, response.StatusCode)
+		return foundLinks
+	}
+
+	//Extracts the HTML body response
+	tokenizer := html.NewTokenizer(response.Body)
+
+	//Iterates the HTML body
+	for {
+		//Gets next token
+		tokenType := tokenizer.Next()
+
+		//Given the token type
+		switch tokenType {
+
+		case html.ErrorToken:
+			err := tokenizer.Err()
+			//If it's the End of the File
+			if err == io.EOF {
+				//Returns the found links list
+				return foundLinks
+			}
+			log.Fatalf("error tokenizing HTML: %v", tokenizer.Err())
+
+		case html.StartTagToken, html.SelfClosingTagToken:
+			token := tokenizer.Token()
+			if token.Data == "a" {
+				for _, attr := range token.Attr {
+					if attr.Key == "href" {
+						foundLink := attr.Val
+						//Clear trailink /
+						if string(foundLink[len(foundLink)-1]) == "/" {
+							foundLink = foundLink[:len(foundLink)-1]
+						}
+						//Relative path
+						if strings.HasPrefix(foundLink, "/") {
+							foundLink = parentURL + foundLink
+						}
+						//Add the found link to the list
+						if strings.HasPrefix(foundLink, baseDomain) && foundLink != parentURL {
+							foundLinks[foundLink] = true
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+func getBaseDomain(url string) string {
+	parts := strings.Split(url, "/")
+	if len(parts) < 3 {
+		fmt.Println("Invalid URL")
+		os.Exit(1)
+	}
+	return parts[0] + "//" + parts[2]
+}
+
+// Function to create a new TreeNode
+func NewTreeNode(name string) *TreeNode {
+	return &TreeNode{
+		name: name,
+		sons: []*TreeNode{},
+	}
+}
+
+// Function to add a child to a TreeNode
+func (node *TreeNode) AddSon(child *TreeNode) {
+	node.sons = append(node.sons, child)
+}
+
+// Function to recursively print the tree
+func PrintTree(node *TreeNode, level int) {
+	fmt.Printf("%s%s\n", getIndent(level), node.name)
+	for _, child := range node.sons {
+		PrintTree(child, level+1)
+	}
+}
+
+// Helper function to get the appropriate indentation
+func getIndent(level int) string {
+	indent := ""
+	for i := 0; i < level; i++ {
+		indent += "-"
+	}
+	return indent
+}

@@ -28,7 +28,13 @@ Even though you are trying to print the counter variable outside the loop, there
 
 To fix this issue and get the correct count of how many goroutines have successfully incremented the counter variable, you can use channels for synchronization.
 */
+
 func main() {
+	channels()
+}
+
+func channels() {
+
 	var counter int
 	counter = 0
 
@@ -44,8 +50,7 @@ func main() {
 
 		}(myChannel, counter)
 
-		channelResponse := <-myChannel
-		counter = channelResponse
+		counter = <-myChannel
 		fmt.Println(counter)
 	}
 	//fmt.Println(counter)
