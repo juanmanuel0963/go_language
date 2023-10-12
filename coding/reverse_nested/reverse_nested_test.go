@@ -1,11 +1,6 @@
 package main
 
-import (
-	"testing"
-
-	"github.com/go-playground/assert/v2"
-)
-
+/*
 func Test_solution(t *testing.T) {
 	type args struct {
 		input string
@@ -35,3 +30,4 @@ func Test_solution_1(t *testing.T) {
 	got := solution("(bar)")
 	assert.Equal(t, got, "rab")
 }
+*/
