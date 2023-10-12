@@ -8,12 +8,13 @@ type TreeNode struct {
 }
 
 func main() {
+	//solution("bar")
 	//solution("(bar)")
-	//solution("foo(bar)")
+	solution("(foo(bar))")
 	//solution("foo(bar)baz")
 	//solution("foo(bar)baz(blim)")
 	//solution("foo(bar(baz(aeiou)))blim")
-	solution("foo(bar(baz))blim")
+	//solution("foo(bar(baz))blim")
 }
 
 func solution(inputString string) {
@@ -148,6 +149,8 @@ func ReverseParser(inputString string, parentNode *TreeNode) int {
 
 	return index
 }
+*/
+
 func ReverseString(inputString string) string {
 
 	outputString := ""
@@ -158,7 +161,7 @@ func ReverseString(inputString string) string {
 
 	return outputString
 }
-*/
+
 // Function to create a new TreeNode
 func NewTreeNode(name string) *TreeNode {
 	return &TreeNode{
@@ -186,7 +189,9 @@ func printNode(nodeParent *TreeNode, level int) {
 
 // Function to recursively print the tree
 func PrintTree(node *TreeNode, level int) {
+
 	fmt.Printf("%s%s\n", getIndent(level), node.name)
+
 	for _, child := range node.sons {
 		PrintTree(child, level+1)
 	}
