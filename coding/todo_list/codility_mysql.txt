@@ -1,0 +1,58 @@
+We have defined a table UserRole with the following structure:
+
+CREATE TABLE UserRole (
+	Id		bigint NOT NULL AUTO_INCREMENT
+	Name		varchar(100) NOT NULL,
+	Description 	varchar(200) NULL,
+	IsEnabled 	bit NOT NULL,
+	Created 	date NOT NULL,
+	CreatedBy 	varchar(200) NOT NULL,
+	Updated 	date NULL,
+	UpdatedBy 	varchar(200) NULL,
+	CONSTRUAINT PK_UserRole PRIMARY KEY (Id ASC)
+)
+
+Your task is to write a SQL query (a report) that, for each user that has ever created (CreatedBy field) a role (Name field), will return four values:
+- User name inthe UserName column;
+- Number of created roles in the NoOfCreatedRoles column;
+- Number of created roles that are enabled (IsEnabled field) in the NoOfCreatedAndEnabledRoles column;
+- Number of updated roles in the NoOfUpdatedRoles column
+
+Rows in the report should be sortedby user name in descending order. Additionally, user names should contain no leading or trailing white spaces and should be uppercase.
+
+Your query should return no NULL values for numerical columns. Instead, NULL should be replaced with -1. For example, it is possible that there are no roles updated by a given user, or that there are no rolescreated by a given userthat are enabled.
+
+You should also take into account that values in CreatedBy and UpdatedBy columns are not consistent:
+- They can contain additional white spaces at the beginning or the end;
+- They can be written using a mixture of small and capital letters, e.g. JOHN SMITH, john smith.
+
+Hints:
+- You can assume that there is at least one role created by each user.
+- Your query will be executed agains MySQL 8.0 database
+
+SOLUTION
+
+WITH UserRolesCTE AS (
+    SELECT
+        UPPER(TRIM(CreatedBy)) AS UserName,
+        COUNT(*) AS NoOfCreatedRoles,
+        SUM(CAST(IsEnabled AS SIGNED)) AS NoOfCreatedAndEnabledRoles
+    FROM UserRole
+    GROUP BY UPPER(TRIM(CreatedBy))
+),
+UpdatedRolesCTE AS (
+    SELECT
+        UPPER(TRIM(UpdatedBy)) AS UserName,
+        COUNT(*) AS NoOfUpdatedRoles
+    FROM UserRole
+    WHERE UpdatedBy IS NOT NULL
+    GROUP BY UPPER(TRIM(UpdatedBy))
+)
+SELECT
+    UC.UserName,
+    COALESCE(NoOfCreatedRoles, -1) AS NoOfCreatedRoles,
+    COALESCE(NoOfCreatedAndEnabledRoles, -1) AS NoOfCreatedAndEnabledRoles,
+    COALESCE(NoOfUpdatedRoles, -1) AS NoOfUpdatedRoles
+FROM UserRolesCTE UC
+LEFT JOIN UpdatedRolesCTE UR ON UC.UserName = UR.UserName
+ORDER BY UC.UserName DESC;

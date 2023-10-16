@@ -10,13 +10,18 @@ require (
 	golang.org/x/image v0.0.0-20220302094943-723b81ca9867
 )
 
-require go.uber.org/multierr v1.10.0 // indirect
+require (
+	github.com/inconshreveable/mousetrap v1.1.0 // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
+	go.uber.org/multierr v1.10.0 // indirect
+)
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fogleman/gg v1.3.0 // indirect
 	github.com/go-playground/assert/v2 v2.2.0
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/spf13/cobra v1.7.0
 	github.com/stretchr/objx v0.5.0 // indirect
 	go.uber.org/zap v1.26.0
 	golang.org/x/net v0.15.0

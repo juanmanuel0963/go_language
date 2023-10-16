@@ -1,0 +1,64 @@
+Golang is very popular for writing CLI applications. One of the most popular libraries which providesan easy-to-use interface for creating such applications is Cobra.
+Write a CLI application for managing a to-do task list using Golang.
+
+Your Task:
+Implement an application for managin to-do task lists. Your app should provide those commands:
+- add. Add a task to the list. Command argument should be the task name.
+- done. Mark a task as done. Command argument should be the task ID, starting from 1.
+- undone. Mark task as not done. Command argument should be the task id, starting from 1.
+- list. List the tasks that have not been done.
+- cleanup - Remove from the store all tasks marked as done.
+
+The task numbering starts from 1 e.g.
+1: implement command list
+
+Example usage for the app couldbe:
+
+Adding tasks:
+todolist add "Implement command list"
+todolist add "Implement command done"
+
+Listing tasks:
+todolist list
+
+Marking as done:
+todolist done 1
+todolist done 2
+todolist undone 1
+
+Hints:
+- Your application should store tasks in a flat file. The structure of this file is not defined.
+It just needs to store the tasks and to be able to differenciate between tasks that have and havenot been done.
+- Don't user external dependencies. Store your list of tasks in a flat file.
+- Your solution will be assessed with Go 1.15 and Cobra will be used inversion 1.1.1
+
+
+Starting code:
+package main
+
+import (
+	"github.com/spf13/cobra"
+	"os"
+)
+
+type Task struct {
+	Name string
+	Done bool
+}
+
+func main() {
+	var rootCmd = &cobra.Command{Use: "todolist"}
+	var cmdAdd = &cobra.Command{
+		Use:   "add [Task name]",
+		Short: "Add task to the list",
+		Args:  cobra.MinimumNArgs(1),
+		Run: func(cmd *cobra.Command, args []string) {
+			os.Exit(1)
+		},
+	}
+	rootCmd.AddCommand(cmdAdd)
+
+	// Implement other commands here
+
+	rootCmd.Execute() // Don't change this
+}
