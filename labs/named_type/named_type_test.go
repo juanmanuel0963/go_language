@@ -7,7 +7,7 @@ func TestNamedType(t *testing.T) {
 
 	// declaring a value of type names
 	friends := names{"Dan", "Marry"}
-	// calling the print() method on friends variable
+	// calling the Print() method on friends variable
 	friends.Print()
 
 	// another way to call a method on a named type

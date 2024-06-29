@@ -10,22 +10,22 @@ func TestMCQ_q1(t *testing.T) {
 	x := 3
 	y := &x
 
-	fmt.Println(*y)
+	fmt.Println(*y) //3
 
-	*y = 4
+	*y = 4 //4
 
-	fmt.Println(x)
+	fmt.Println(x) //4
 }
 
 func TestPointers_v1(t *testing.T) {
 
 	x := 5
-	p := &x
-	q := *p
+	p := &x //p=ce3z
+	q := *p // q=5
 
-	fmt.Printf("p = %d", *p)
+	fmt.Printf("p = %d", *p) //p=5
 	fmt.Println()
-	fmt.Printf("q = %d", q)
+	fmt.Printf("q = %d", q) //q=5
 	fmt.Println()
 }
 

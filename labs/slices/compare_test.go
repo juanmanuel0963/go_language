@@ -33,9 +33,9 @@ func TestSliceCompare_v2(t *testing.T) {
 			true,
 		},
 		{
-			"Test1",
-			args{[]int{10, 20, 30}, []int{10, 20, 30}},
-			true,
+			"Test2",
+			args{[]int{10, 20, 30}, []int{10, 20, 40}},
+			false,
 		},
 		// TODO: Add test cases.
 	}

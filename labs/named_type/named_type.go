@@ -12,7 +12,7 @@ func (n names) Print() {
 	// n is called method's receiver
 	// n is the actual copy of the names we're working with and is available in the function.
 	// n is like this or self from OOP.
-	// any variable of type names can call this function on itself like variable_name.print()
+	// any variable of type names can call this function on itself like variable_name.Print()
 
 	// iterating and printing all names
 	for i, name := range n {

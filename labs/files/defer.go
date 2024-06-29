@@ -18,7 +18,7 @@ import (
 //  after the operation of writing to the file has finished.
 
 func Defer() {
-	file, err := os.Open("file1.txt")
+	file, err := os.Open("file.txt")
 	if err != nil {
 		fmt.Println(err)
 		log.Fatal(err)

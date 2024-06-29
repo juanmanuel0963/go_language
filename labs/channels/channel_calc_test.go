@@ -23,5 +23,7 @@ func TestCalc(t *testing.T) {
 
 	// Receive a message from the channels
 	squares, cubes := <-sqrch, <-cubech
-	fmt.Println("Final output", squares+cubes)
+	fmt.Println("squares: ", squares)
+	fmt.Println("cubes: ", cubes)
+	fmt.Println("Final output: ", squares+cubes)
 }
