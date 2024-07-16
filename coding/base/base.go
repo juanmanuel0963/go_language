@@ -4,6 +4,7 @@ import "fmt"
 
 func solution(input int) int {
 
+	fmt.Println(input)
 	return 0
 }
 

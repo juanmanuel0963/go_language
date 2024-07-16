@@ -1,1 +1,2 @@
-false:nueva
+true:nueva
+false:juan

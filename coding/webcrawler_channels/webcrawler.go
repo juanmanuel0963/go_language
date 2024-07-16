@@ -31,6 +31,8 @@ var crawledPages Pages
 
 func main() {
 
+	fmt.Println(len(os.Args))
+
 	if len(os.Args) != 3 {
 		fmt.Println("Usage: go run webcrawler.go <starting_url> <deep_level_to_retrieve>")
 		os.Exit(1)

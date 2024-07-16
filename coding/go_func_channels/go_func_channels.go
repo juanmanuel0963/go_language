@@ -35,23 +35,23 @@ func main() {
 
 func channels() {
 
-	var counter int
-	counter = 0
+	var myCounter int
+	myCounter = 0
 
 	for i := 0; i < 1000; i++ {
 
 		myChannel := make(chan int)
 
-		go func(channel chan int, myCounter int) {
+		go func(channel chan int, counter int) {
 
 			myCounter++
 			channel <- myCounter
 			close(channel)
 
-		}(myChannel, counter)
+		}(myChannel, myCounter)
 
-		counter = <-myChannel
-		fmt.Println(counter)
+		myCounter = <-myChannel
+		fmt.Println(myCounter)
 	}
 	//fmt.Println(counter)
 }
