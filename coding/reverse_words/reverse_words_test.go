@@ -17,13 +17,13 @@ func Test_solution(t *testing.T) {
 	}{
 		{
 			"Test 1",
-			args{input: "hello"},
-			"holle",
+			args{input: " the   sky   is   blue "},
+			"blue is sky the",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := reverseVowels(tt.args.input); got != tt.want {
+			if got := reverseWords(tt.args.input); got != tt.want {
 				t.Errorf("solution() = %v, want %v", got, tt.want)
 			}
 		})
@@ -32,6 +32,6 @@ func Test_solution(t *testing.T) {
 
 func Test_solution_1(t *testing.T) {
 
-	got := reverseVowels("hello")
-	assert.Equal(t, got, "holle")
+	got := reverseWords("the   sky   is   blue")
+	assert.Equal(t, got, "blue is sky the")
 }

@@ -5,12 +5,6 @@ import (
 	"strings"
 )
 
-func solution(input int) int {
-
-	fmt.Println(input)
-	return 0
-}
-
 func reverseVowels(s string) string {
 
 	var vowels []string
