@@ -20,6 +20,7 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fogleman/gg v1.3.0 // indirect
 	github.com/go-playground/assert/v2 v2.2.0
+	github.com/magiconair/properties v1.8.7
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/spf13/cobra v1.7.0
 	github.com/stretchr/objx v0.5.0 // indirect
