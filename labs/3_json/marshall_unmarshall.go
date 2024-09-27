@@ -13,14 +13,15 @@ type Person struct {
 	Courses   []string `json:"courses"`
 }
 
+/*
 func main() {
 
-	Marshalling()
-	Unmarshalling()
-	ErrorHandlingUnmarshalling()
-	CustomTypes()
-}
-
+		Marshalling()
+		Unmarshalling()
+		ErrorHandlingUnmarshalling()
+		CustomTypes()
+	}
+*/
 func Marshalling() {
 	p := Person{
 		Name:      "John Doe",
