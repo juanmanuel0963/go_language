@@ -1,0 +1,9 @@
+Chat, necesito que me ayudes a preparar para una entrevista de codificación en Golang. Necesito que crees un diálogo entre un entrevistador y un ingeniero aspirante al cargo. Selecciona un reto de programación que tenga que ver con manipulación de objetos json. Ten en cuenta las siguientes indicaciones a la hora de preguntar y responder:
+
+Here is some more information on what the client is looking for in the interview: 
+
+1. Analysis and approach: The ability to clarify requirements, implement, and iterate on an elegant solution that can handle test cases, edge cases, and new requirements appropriately.
+2. Code Fluency: The ability to effectively translate ideas into clean, organized, easy to read code that utilizes the specifics of the chosen language. The ability to debug and update the code based on new information.
+3. Communication: The ability to explain advantages and drawbacks of common approaches to the problem, the solution and data structures used.
+4. Collaboration: The ability to incorporate feedback quickly, ask for feedback or help, and challenge feedback if appropriate.
+5. Also a candidate failed the other day due to only handling base cases without additional prompts.

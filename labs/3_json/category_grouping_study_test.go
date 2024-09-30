@@ -1,15 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
-	"time"
 )
 
-// Test case para GroupProductsByCategory
-func TestGroupProductsByCategory(t *testing.T) {
+func TestGroupProductsByCategoryStudy(t *testing.T) {
 	// Definimos el formato de fecha esperado
-	const timeLayout = time.RFC3339
+	//const timeLayout = time.RFC3339
 
 	// Entrada JSON con el campo sell_date
 	input := []byte(`[
@@ -20,27 +19,32 @@ func TestGroupProductsByCategory(t *testing.T) {
     ]`)
 
 	// Parseamos las fechas esperadas
-	laptopSellDate, _ := time.Parse(timeLayout, "2024-09-28T10:00:00Z")
-	headphonesSellDate, _ := time.Parse(timeLayout, "2024-09-25T15:30:00Z")
-	coffeeMugSellDate, _ := time.Parse(timeLayout, "2024-09-20T08:15:00Z")
-	mysteryBoxSellDate, _ := time.Parse(timeLayout, "2024-09-26T12:45:00Z")
+	//laptopSellDate, _ := time.Parse(timeLayout, "2024-09-28T10:00:00Z")
+	//headphonesSellDate, _ := time.Parse(timeLayout, "2024-09-25T15:30:00Z")
+	//coffeeMugSellDate, _ := time.Parse(timeLayout, "2024-09-20T08:15:00Z")
+	//mysteryBoxSellDate, _ := time.Parse(timeLayout, "2024-09-26T12:45:00Z")
 
 	// Resultado esperado
-	expected := map[string][]Product{
+	expected := map[string][]ProductStudy{
 		"Electronics": {
-			{Name: "Laptop", Price: 1000, SellDate: laptopSellDate},
-			{Name: "Headphones", Price: 100, SellDate: headphonesSellDate},
+			{Name: "Laptop", Price: 1000, SellDate: "2024-09-28T10:00:00Z"},
+			{Name: "Headphones", Price: 100, SellDate: "2024-09-25T15:30:00Z"},
 		},
 		"Home Goods": {
-			{Name: "Coffee Mug", Price: 15, SellDate: coffeeMugSellDate},
+			{Name: "Coffee Mug", Price: 15, SellDate: "2024-09-20T08:15:00Z"},
 		},
 		"Unknown": {
-			{Name: "Mystery Box", Price: 50, SellDate: mysteryBoxSellDate},
+			{Name: "Mystery Box", Price: 50, SellDate: "2024-09-26T12:45:00Z"},
 		},
 	}
 
+	fmt.Println(expected)
+
 	// Ejecutamos la función para agrupar productos
-	result, err := GroupProductsByCategory(input)
+	result, err := GroupProductsByCategoryStudy(input)
+
+	fmt.Println(result)
+
 	if err != nil {
 		t.Fatalf("Error al agrupar productos: %v", err)
 	}

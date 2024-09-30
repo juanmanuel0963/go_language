@@ -1,0 +1,159 @@
+### Fase 1: Aclaración de Requisitos
+
+**Entrevistador:**  
+Hoy vamos a trabajar con un ejercicio de manipulación de datos. Necesito que implementes una función en Golang que agrupe las palabras en una lista según su longitud. Las palabras que tengan la misma longitud deberían agruparse en el mismo conjunto. El resultado debe ser un mapa donde la clave es la longitud de la palabra y el valor es una lista de palabras con esa longitud.
+
+¿Está clara la consigna o tienes alguna pregunta?
+
+**Candidato:**  
+Solo para confirmar, ¿quieres que devuelva un mapa donde la clave sea la longitud de las palabras y el valor sea un slice de todas las palabras que tengan esa longitud?
+
+**Entrevistador:**  
+Exacto. Y no te preocupes por el orden en que aparecen las palabras en cada slice, solo enfócate en agruparlas correctamente. ¿Está todo claro?
+
+**Candidato:**  
+Sí, está claro. Voy a empezar con la implementación.
+
+---
+
+### Fase 2: Implementación
+
+**Candidato (pensando en voz alta):**  
+Voy a empezar creando una función que reciba un slice de strings. Luego, recorreré cada palabra, calcularé su longitud y la agregaré al mapa en la clave correspondiente. La estructura del mapa será `map[int][]string`, donde la clave es la longitud de la palabra y el valor es un slice con las palabras de esa longitud.
+
+Voy a escribir el código ahora:
+
+```go
+func GroupWordsByLength(words []string) map[int][]string {
+	grouped := make(map[int][]string)
+	for _, word := range words {
+		length := len(word)
+		grouped[length] = append(grouped[length], word)
+	}
+	return grouped
+}
+```
+
+---
+
+### Fase 3: Comunicación y Detalles
+
+**Entrevistador:**  
+Bien, ¿puedes explicarme tu razonamiento?
+
+**Candidato:**  
+Claro. He creado un mapa donde la clave es la longitud de la palabra. Luego, recorro el slice de palabras usando un `for range` para calcular la longitud de cada palabra con `len(word)`. Después, uso esa longitud como clave en el mapa, y utilizo `append` para agregar la palabra a la lista correspondiente.
+
+El mapa se inicializa con `make` para evitar problemas de asignación. Finalmente, devuelvo el mapa con todas las palabras agrupadas.
+
+**Entrevistador:**  
+Eso tiene sentido. Ahora, ¿cómo manejarías casos límite?
+
+---
+
+### Fase 4: Casos Límite y Pruebas
+
+**Candidato:**  
+Algunos casos límite que veo serían:
+
+1. Si la lista de palabras está vacía, debería devolver un mapa vacío.
+2. Si todas las palabras tienen la misma longitud, todas deberían estar en el mismo grupo.
+3. Si solo hay una palabra, el mapa debería tener solo una entrada.
+4. Si hay palabras repetidas, deberían aparecer todas las instancias en el grupo correspondiente.
+
+Voy a agregar algunos test cases para estos casos límite:
+
+```go
+func TestGroupWordsByLength(t *testing.T) {
+	tests := []struct {
+		input    []string
+		expected map[int][]string
+	}{
+		{[]string{}, map[int][]string{}}, // Caso 1: Lista vacía
+		{[]string{"cat", "dog", "bat"}, map[int][]string{3: {"cat", "dog", "bat"}}}, // Caso 2: Todas las palabras tienen la misma longitud
+		{[]string{"hello"}, map[int][]string{5: {"hello"}}}, // Caso 3: Solo una palabra
+		{[]string{"apple", "banana", "apple"}, map[int][]string{5: {"apple", "apple"}, 6: {"banana"}}}, // Caso 4: Palabras repetidas
+	}
+
+	for _, test := range tests {
+		result := GroupWordsByLength(test.input)
+		if !reflect.DeepEqual(result, test.expected) {
+			t.Errorf("Got %v, expected %v", result, test.expected)
+		}
+	}
+}
+```
+
+---
+
+### Fase 5: Incorporando Retroalimentación
+
+**Entrevistador:**  
+Esto está muy bien. Ahora, ¿qué harías si te pidiera agregar una nueva funcionalidad, como contar cuántas palabras hay en cada grupo y devolver eso también?
+
+**Candidato:**  
+Podríamos modificar la función para que devuelva tanto el mapa de palabras como un mapa adicional con el conteo de palabras por longitud. Es decir, la función devolvería dos mapas: uno para agrupar las palabras y otro para contar cuántas palabras hay en cada grupo.
+
+Voy a hacer esa modificación:
+
+```go
+func GroupWordsByLengthWithCount(words []string) (map[int][]string, map[int]int) {
+	grouped := make(map[int][]string)
+	counts := make(map[int]int)
+	for _, word := range words {
+		length := len(word)
+		grouped[length] = append(grouped[length], word)
+		counts[length]++
+	}
+	return grouped, counts
+}
+```
+
+Ahora el segundo mapa `counts` contiene el número de palabras para cada longitud.
+
+---
+
+### Fase 6: Probando la Solución
+
+**Candidato:**  
+Voy a probar la nueva funcionalidad agregando casos de prueba para verificar si tanto el agrupamiento como el conteo son correctos.
+
+```go
+func TestGroupWordsByLengthWithCount(t *testing.T) {
+	tests := []struct {
+		input         []string
+		expectedGroup map[int][]string
+		expectedCount map[int]int
+	}{
+		{[]string{}, map[int][]string{}, map[int]int{}},
+		{[]string{"cat", "dog", "bat"}, map[int][]string{3: {"cat", "dog", "bat"}}, map[int]int{3: 3}},
+		{[]string{"hello"}, map[int][]string{5: {"hello"}}, map[int]int{5: 1}},
+		{[]string{"apple", "banana", "apple"}, map[int][]string{5: {"apple", "apple"}, 6: {"banana"}}, map[int]int{5: 2, 6: 1}},
+	}
+
+	for _, test := range tests {
+		resultGroup, resultCount := GroupWordsByLengthWithCount(test.input)
+		if !reflect.DeepEqual(resultGroup, test.expectedGroup) || !reflect.DeepEqual(resultCount, test.expectedCount) {
+			t.Errorf("Got %v and %v, expected %v and %v", resultGroup, resultCount, test.expectedGroup, test.expectedCount)
+		}
+	}
+}
+```
+
+---
+
+### Fase 7: Discusión Final
+
+**Entrevistador:**  
+Me gusta cómo has manejado las modificaciones. ¿Ves alguna desventaja en este enfoque o mejoras que puedas sugerir?
+
+**Candidato:**  
+La solución es eficiente para la mayoría de los casos comunes. Sin embargo, si trabajáramos con una lista de palabras muy grande, podríamos considerar optimizaciones en cuanto a la asignación de memoria, o incluso paralelizar el procesamiento usando goroutines si el problema requiere alta concurrencia. 
+
+Otra mejora sería agregar validación para asegurarnos de que las palabras no contengan caracteres no válidos o vacíos, aunque no se pidió específicamente en este ejercicio.
+
+**Entrevistador:**  
+Buena observación. ¡Eso sería todo por ahora! Gracias.
+
+**Candidato:**  
+Gracias a ti.

@@ -6,7 +6,10 @@ Certainly! Here is the dialogue between the interviewer and the candidate in Eng
 
 **Candidate**: Yes, I'm ready.
 
-**Interviewer**: Great. Here's the problem: I want you to write a function in Go that receives a JSON array of products. Each product has a name, price, and category. We need you to group the products by category and return a new JSON object in this format. Here's an example of the input:
+**Interviewer**: Great. Here's the problem: I want you to write a function in Go that receives a JSON array of products. 
+Each product has a name, price, and category. 
+We need you to group the products by category and return a new JSON object in this format. 
+Here's an example of the input:
 
 ```json
 [
@@ -36,23 +39,32 @@ Do you have any questions before you begin?
 
 ### Phase 1: Clarifying Requirements
 
-**Candidate**: Yes, I'd like to clarify a few things before starting. First, does every product have exactly the same attributes: name, price, and category?
+**Candidate**: Yes, I'd like to clarify a few things before starting. 
+First, does every product have exactly the same attributes: name, price, and category?
 
 **Interviewer**: Good question. Yes, all products will follow that format.
 
-**Candidate**: Understood. Also, I want to confirm that the input JSON is always an array of product objects, and the output should be a JSON object with categories as keys and arrays of products as values. Is that correct?
+**Candidate**: Understood. 
+Also, I want to confirm that the input JSON is always an array of product objects, 
+and the output should be a JSON object with categories as keys and arrays of products as values. 
+Is that correct?
 
 **Interviewer**: That's correct.
 
 **Candidate**: Finally, should I handle error cases, such as missing categories or malformed JSON?
 
-**Interviewer**: Assume that the JSON is always well-formed. However, you can consider handling cases where some products might not have a category, and explain how you'd handle that.
+**Interviewer**: Assume that the JSON is always well-formed. 
+However, you can consider handling cases where some products might not have a category, and explain how you'd handle that.
 
 ---
 
 ### Phase 2: Implementation
 
-**Candidate**: Perfect. My approach will be to first deserialize the input JSON into a slice of product structs. Then, I'll iterate over this slice and group the products by their categories. For the output, I'll create a map where the key is the category name and the value is a slice of products belonging to that category. Does that sound good?
+**Candidate**: Perfect. 
+My approach will be to first deserialize the input JSON into a slice of product structs. 
+Then, I'll iterate over this slice and group the products by their categories. 
+For the output, I'll create a map where the key is the category name and the value is a slice of products belonging to that category. 
+Does that sound good?
 
 **Interviewer**: Sounds good. Please proceed.
 
@@ -88,16 +100,17 @@ func GroupProductsByCategory(input []byte) (map[string][]Product, error) {
     return grouped, nil
 }
 ```
-
 ---
-
 ### Phase 3: Communication and Details
 
 **Interviewer**: Can you explain your reasoning behind this approach?
 
-**Candidate**: Sure. First, I use `json.Unmarshal` to deserialize the input JSON into a slice of `Product` structs. Then, I iterate over each product and add it to a map called `grouped`, where the key is the category. I use the `append` function to add products to the slice corresponding to their category.
+**Candidate**: Sure. First, I use `json.Unmarshal` to deserialize the input JSON into a slice of `Product` structs. 
+Then, I iterate over each product and add it to a map called `grouped`, where the key is the category. 
+I use the `append` function to add products to the slice corresponding to their category.
 
-In the output, I include only the `name` and `price` fields of each product, as shown in the expected output, and omit the `category` field since it's implied by the map's key.
+In the output, I include only the `name` and `price` fields of each product, as shown in the expected output, 
+and omit the `category` field since it's implied by the map's key.
 
 ---
 
@@ -105,11 +118,14 @@ In the output, I include only the `name` and `price` fields of each product, as 
 
 **Interviewer**: Good. How would you handle edge cases, such as an empty list of products?
 
-**Candidate**: If the input list is empty, `json.Unmarshal` will deserialize it into an empty slice, and iterating over it won't cause any issues. The function would return an empty map, which is appropriate for an empty input.
+**Candidate**: If the input list is empty, `json.Unmarshal` will deserialize it into an empty slice, 
+and iterating over it won't cause any issues. 
+The function would return an empty map, which is appropriate for an empty input.
 
 **Interviewer**: What if some products don't have a category?
 
-**Candidate**: If a product doesn't have a category, we can assign it to a default category like `"Unknown"`. Before grouping, we can check if the `Category` field is empty and set it accordingly:
+**Candidate**: If a product doesn't have a category, we can assign it to a default category like `"Unknown"`. 
+Before grouping, we can check if the `Category` field is empty and set it accordingly:
 
 ```go
 if product.Category == "" {
@@ -121,7 +137,8 @@ if product.Category == "" {
 
 ### Phase 5: Incorporating Feedback
 
-**Interviewer**: I like your approach and how you clarified the requirements upfront. One suggestion: it would be beneficial to include a test case to handle products without a category.
+**Interviewer**: I like your approach and how you clarified the requirements upfront. 
+One suggestion: it would be beneficial to include a test case to handle products without a category.
 
 **Candidate**: Absolutely! I can implement that change quickly.
 
@@ -222,13 +239,16 @@ func TestGroupProductsByCategory(t *testing.T) {
 }
 ```
 
-**Candidate**: This test checks whether the `GroupProductsByCategory` function correctly groups products, including those without a category, and matches the expected output.
+**Candidate**: This test checks whether the `GroupProductsByCategory` function correctly groups products, including those without a category, 
+and matches the expected output.
 
 ---
 
 ### Phase 7: Final Discussion
 
-**Interviewer**: Excellent work. You've demonstrated a solid understanding of JSON manipulation in Go and have effectively handled edge cases. Do you have any questions for me?
+**Interviewer**: Excellent work. 
+You've demonstrated a solid understanding of JSON manipulation in Go and have effectively handled edge cases. 
+Do you have any questions for me?
 
 **Candidate**: Thank you! I don't have any questions at the moment.
 

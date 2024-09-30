@@ -1,0 +1,159 @@
+### Phase 1: Requirements Clarification
+
+**Interviewer:**  
+Today we’ll work on a data manipulation exercise. I need you to implement a function in Golang that groups words in a list according to their length. Words with the same length should be grouped together. The result should be a map where the key is the word length and the value is a list of words with that length.
+
+Is the task clear, or do you have any questions?
+
+**Candidate:**  
+Just to confirm, you want me to return a map where the key is the length of the words and the value is a slice of all the words with that length?
+
+**Interviewer:**  
+Exactly. Don’t worry about the order in which the words appear in each slice, just focus on grouping them correctly. Is everything clear?
+
+**Candidate:**  
+Yes, it’s clear. I’ll start with the implementation.
+
+---
+
+### Phase 2: Implementation
+
+**Candidate (thinking aloud):**  
+I’ll start by creating a function that takes a slice of strings. Then, I’ll loop through each word, calculate its length, and add it to the map under the corresponding key. The structure of the map will be `map[int][]string`, where the key is the length of the word and the value is a slice of words with that length.
+
+Let me write the code now:
+
+```go
+func GroupWordsByLength(words []string) map[int][]string {
+	grouped := make(map[int][]string)
+	for _, word := range words {
+		length := len(word)
+		grouped[length] = append(grouped[length], word)
+	}
+	return grouped
+}
+```
+
+---
+
+### Phase 3: Communication and Details
+
+**Interviewer:**  
+Great, can you explain your thought process?
+
+**Candidate:**  
+Sure. I created a map where the key is the length of the word. Then, I loop through the slice of words using a `for range` to calculate the length of each word with `len(word)`. After that, I use the length as the key in the map, and I use `append` to add the word to the corresponding list.
+
+I initialized the map using `make` to avoid allocation issues. Finally, I return the map with all the words grouped.
+
+**Interviewer:**  
+That makes sense. Now, how would you handle edge cases?
+
+---
+
+### Phase 4: Edge Cases and Tests
+
+**Candidate:**  
+Some edge cases I see are:
+
+1. If the list of words is empty, it should return an empty map.
+2. If all words have the same length, they should all be in the same group.
+3. If there’s only one word, the map should have just one entry.
+4. If there are duplicate words, all instances should appear in the corresponding group.
+
+I'll add some test cases to cover these edge cases:
+
+```go
+func TestGroupWordsByLength(t *testing.T) {
+	tests := []struct {
+		input    []string
+		expected map[int][]string
+	}{
+		{[]string{}, map[int][]string{}}, // Case 1: Empty list
+		{[]string{"cat", "dog", "bat"}, map[int][]string{3: {"cat", "dog", "bat"}}}, // Case 2: All words have the same length
+		{[]string{"hello"}, map[int][]string{5: {"hello"}}}, // Case 3: Only one word
+		{[]string{"apple", "banana", "apple"}, map[int][]string{5: {"apple", "apple"}, 6: {"banana"}}}, // Case 4: Duplicate words
+	}
+
+	for _, test := range tests {
+		result := GroupWordsByLength(test.input)
+		if !reflect.DeepEqual(result, test.expected) {
+			t.Errorf("Got %v, expected %v", result, test.expected)
+		}
+	}
+}
+```
+
+---
+
+### Phase 5: Incorporating Feedback
+
+**Interviewer:**  
+This looks very good. Now, what would you do if I asked you to add new functionality, like counting how many words there are in each group and returning that as well?
+
+**Candidate:**  
+We could modify the function to return both the map of words and an additional map with the count of words per length. The function would return two maps: one for grouping the words and another for counting how many words are in each group.
+
+Let me make that modification:
+
+```go
+func GroupWordsByLengthWithCount(words []string) (map[int][]string, map[int]int) {
+	grouped := make(map[int][]string)
+	counts := make(map[int]int)
+	for _, word := range words {
+		length := len(word)
+		grouped[length] = append(grouped[length], word)
+		counts[length]++
+	}
+	return grouped, counts
+}
+```
+
+Now the second map `counts` contains the number of words for each length.
+
+---
+
+### Phase 6: Testing the Solution
+
+**Candidate:**  
+I'll test the new functionality by adding test cases to verify if both the grouping and the count are correct.
+
+```go
+func TestGroupWordsByLengthWithCount(t *testing.T) {
+	tests := []struct {
+		input         []string
+		expectedGroup map[int][]string
+		expectedCount map[int]int
+	}{
+		{[]string{}, map[int][]string{}, map[int]int{}},
+		{[]string{"cat", "dog", "bat"}, map[int][]string{3: {"cat", "dog", "bat"}}, map[int]int{3: 3}},
+		{[]string{"hello"}, map[int][]string{5: {"hello"}}, map[int]int{5: 1}},
+		{[]string{"apple", "banana", "apple"}, map[int][]string{5: {"apple", "apple"}, 6: {"banana"}}, map[int]int{5: 2, 6: 1}},
+	}
+
+	for _, test := range tests {
+		resultGroup, resultCount := GroupWordsByLengthWithCount(test.input)
+		if !reflect.DeepEqual(resultGroup, test.expectedGroup) || !reflect.DeepEqual(resultCount, test.expectedCount) {
+			t.Errorf("Got %v and %v, expected %v and %v", resultGroup, resultCount, test.expectedGroup, test.expectedCount)
+		}
+	}
+}
+```
+
+---
+
+### Phase 7: Final Discussion
+
+**Interviewer:**  
+I like how you've handled the modifications. Do you see any drawbacks in this approach, or improvements you could suggest?
+
+**Candidate:**  
+The solution is efficient for most common cases. However, if we were dealing with a very large list of words, we might consider optimizations regarding memory allocation or even parallelizing the processing using goroutines if the problem requires high concurrency.
+
+Another improvement could be to add validation to ensure that the words don’t contain invalid or empty characters, although this wasn’t specifically requested for this exercise.
+
+**Interviewer:**  
+Good observation. That would be all for now! Thank you.
+
+**Candidate:**  
+Thank you!
